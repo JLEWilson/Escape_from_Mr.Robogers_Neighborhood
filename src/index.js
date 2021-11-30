@@ -1,6 +1,6 @@
 import './css/styles.css';
 import $ from "jquery";
-import { Player, Enemy } from './js/entity';
+import { PlayerEntity, EnemyEntity } from './js/entity';
 import { LevelMap, Player, Animator} from './js/DisplayObjects.js';
 
 //make an instance of each object
@@ -9,7 +9,7 @@ let waltDisney = new Animator();
 let gameMaps = new LevelMap();
 let player1 = new Player(waltDisney, gameMaps);
 let player;
-const enemy = new Enemy("bug");
+const enemy = new EnemyEntity("bug");
 
 export function createRoom() {
   $("#map-background").html("");
@@ -26,7 +26,7 @@ createRoom();
 $('#character-create-form').submit((event) => {
   event.preventDefault();
   const name = $('#charName').val();
-  player = new Player(name, 30, 30, 5, 3);
+  player = new PlayerEntity(name, 30, 30, 5, 3);
   player.setBattleText(enemy);
   enemy.setBattleText(player);
   $('.story-area').append("<p>Greetings " + player.name + "!!!</p>");

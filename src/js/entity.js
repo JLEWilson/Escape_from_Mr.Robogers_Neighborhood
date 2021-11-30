@@ -29,7 +29,7 @@ export default class Entity{
   }
 }
 //Default player stats are (Name, 30, 30, 5, 3)
-export class Player extends Entity{
+export class PlayerEntity extends Entity{
   constructor(name, health, mana, attackDamage, armor){
     super(name, health, mana, attackDamage, armor);
     this.devices = {};
@@ -64,7 +64,7 @@ export class Player extends Entity{
 
   }
 }
-export class Enemy extends Entity{
+export class EnemyEntity extends Entity{
   constructor(name){
     switch (name){
       case "unknown error":
