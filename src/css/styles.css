@@ -107,8 +107,29 @@ canvas {
 .table {
   background-color: rgb(66, 51, 40);
 }
+
+.hole {
+  background-color:rgb(138, 74, 49);
+}
+
+.table {
+  background-color: rgb(66, 51, 40);
+}
+
 .door {
   background-color: white;
+}
+
+.lockedDoor {
+  background-color: rgba(255, 255, 255, 0.808);
+}
+
+.key {
+  background-color: gold;
+}
+
+.conveyer {
+  background-color: wheat;
 }
 
 /* ---text-box--- */
