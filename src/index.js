@@ -1,7 +1,7 @@
 import './css/styles.css';
 import $ from "jquery";
 import { takeInput, waltDisney, player1 } from "./overworldState.js";
-import {assignPlayer, assignEnemy} from "./battleState.js";
+import {assignPlayer} from "./battleState.js";
 
 let gameState = "titleScreen";
 
@@ -23,7 +23,7 @@ $('#character-create-form').submit((event) => {
   changeGameState('overWorld');
 });
 
-function changeGameState(string){
+export function changeGameState(string){
   gameState = string;
   if (gameState === "overWorld") {
     loopA();
@@ -31,6 +31,5 @@ function changeGameState(string){
     $('.battle-action').hide();
   } else if (gameState === "battleState") {
     $('.battle-action').show();
-
   }
 }

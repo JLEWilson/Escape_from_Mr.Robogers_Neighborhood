@@ -1,4 +1,6 @@
 import { createRoom } from "../overworldState.js";
+import { changeGameState } from "../index.js";
+import { assignEnemy } from "../battleState.js";
 
 export class Animator{
   constructor(){
@@ -65,7 +67,7 @@ export class LevelMap{
         [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
         [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
         [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
-        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
+        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new BattleTile(true,'white','bug'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
         [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
         [new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black')]
       ],
@@ -133,5 +135,103 @@ export class Door extends Tile{
     player.y = this.dY;
     player.z = this.dZ;
     createRoom();
+  }
+}
+
+export class LockedDoor extends Tile{
+  constructor(trans,text,x,y,z){
+    super(trans, text);
+    this.dX = x;
+    this.dY = y;
+    this.dZ = z;
+  }
+  action(player){
+    player.x = this.dX;
+    player.y = this.dY;
+    player.z = this.dZ;
+    createRoom();
+  }
+}
+
+export class TrapDoor extends Tile{
+  constructor(trans,text,x,y,z){
+    super(trans, text);
+    this.dX = x;
+    this.dY = y;
+    this.dZ = z;
+  }
+  action(player){
+    player.x = this.dX;
+    player.y = this.dY;
+    player.z = this.dZ;
+    this.texture = "void"
+    createRoom();
+  }
+}
+
+export class Conveyer extends Tile{
+  constructor(trans,text){
+    super(trans, text);
+    
+  }
+  action(player){
+    setTimeout(()=>{if(player.levelSet.Rooms[player.z][player.x][player.y+1].transparent){
+    player.move("S");
+    }
+    this.texture = "conveyer"
+    createRoom() ;} , 1000/12);
+      
+  }
+}
+
+export class Hole extends Tile{
+  constructor(trans,text){
+    super(trans, text);
+    
+  }
+  action(player){
+    setTimeout(()=>{if(player.levelSet.Rooms[player.z][player.x][player.y+1].transparent){
+    player.move("S");
+    }
+    this.texture = "hole"
+    createRoom() ;} , 1000/12);
+      
+  }
+}
+
+//ice
+//spikes
+//restore
+//mana pool
+//items
+//wall-in tile
+//tunnel
+//button reveal tile
+
+export class Key extends Tile{
+  constructor(trans, text, x, y, z){
+    super(trans, text);
+    this.doorToUnlockX = x;
+    this.doorToUnlockY = y;
+    this.doorToUnlockZ = z;
+  }
+  action(player){    
+    player.levelSet.Rooms[this.doorToUnlockX][this.doorToUnlockY][this.doorToUnlockZ].transparent = true;
+    player.levelSet.Rooms[this.doorToUnlockX][this.doorToUnlockY][this.doorToUnlockZ].texture = "door";
+    this.texture = "white";    
+    createRoom();    
+  }
+}
+
+export class BattleTile extends Tile{  
+  constructor(trans, text, enemyName){
+    super(trans, text);
+    this.texture = "white"
+    this.enemyName = enemyName    
+  }
+  action(player){
+    console.log("hi")
+    assignEnemy(this.enemyName);
+    changeGameState("battleState");
   }
 }
