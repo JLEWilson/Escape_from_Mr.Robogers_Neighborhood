@@ -20,7 +20,7 @@ body{
   border: black solid 2px;
 }
 .story-area{
-  overflow-y: auto;
+  overflow-y: hidden;
   height: 10em;
   border: black solid 2px;
 }
@@ -52,4 +52,18 @@ canvas {
 }
 .door {
   background-color: white;
+}
+.hole {
+  background-color:rgb(138, 74, 49);
+}
+.lockedDoor {
+  background-color: rgba(255, 255, 255, 0.808);
+}
+
+.key {
+  background-color: gold;
+}
+
+.conveyer {
+  background-color: wheat;
 }

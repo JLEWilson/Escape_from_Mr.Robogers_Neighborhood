@@ -1,6 +1,8 @@
 import { createRoom } from "../overworldState.js";
 import { changeGameState } from "../index.js";
 import { assignEnemy } from "../battleState.js";
+import { updatePlayerHealthUI } from "../battleState.js";
+import {playerEntity} from "../battleState.js";
 
 export class Animator{
   constructor(){
@@ -61,14 +63,14 @@ export class LevelMap{
     this.Rooms = [
       [
         [new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Door(true,'door',8,4,1),new Tile(false, 'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black')],
-        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
+        [new Tile(false,'black'),new Tile(true,'white'),new Conveyer(true,'white','N'),new Conveyer(true,'white','E'),new Conveyer(true,'white','S'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
         [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
         [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
         [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
         [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
         [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
         [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new BattleTile(true,'white','bug'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
-        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
+        [new Tile(false,'black'),new ConveyerButton(true,'white',0,1,3),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
         [new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black')]
       ],
       [
@@ -170,17 +172,15 @@ export class TrapDoor extends Tile{
 }
 
 export class Conveyer extends Tile{
-  constructor(trans,text){
-    super(trans, text);
-    
+  constructor(trans,text,direction){
+    super(trans, text); 
+    this.direction = direction   
   }
   action(player){
-    setTimeout(()=>{if(player.levelSet.Rooms[player.z][player.x][player.y+1].transparent){
-    player.move("S");
-    }
+    setTimeout(()=>{
+    player.move(this.direction);    
     this.texture = "conveyer"
-    createRoom() ;} , 1000/12);
-      
+    createRoom() ;} , 1000/12);      
   }
 }
 
@@ -223,6 +223,19 @@ export class Key extends Tile{
   }
 }
 
+export class ConveyerButton extends Tile{
+  constructor(trans, text, x, y, z){
+    super(trans, text);
+    this.convToDisableX = x;
+    this.convToDisableY = y;
+    this.convToDisableZ = z;
+  }
+  action(player){
+    console.log("it works")
+    player.levelSet.Rooms[this.convToDisableX][this.convToDisableY][this.convToDisableZ].direction = ""
+  }
+}
+
 export class BattleTile extends Tile{  
   constructor(trans, text, enemyName){
     super(trans, text);
@@ -235,3 +248,4 @@ export class BattleTile extends Tile{
     changeGameState("battleState");
   }
 }
+

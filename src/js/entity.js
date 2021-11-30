@@ -2,7 +2,9 @@ export default class Entity{
   constructor(name, health, mana, attackDamage, armor){
     this.name = name;
     this.cpu = health;
+    this.maxCpu = health;
     this.ram = mana;
+    this.maxRam = mana;
     this.disk = attackDamage;
     this.fanUsage = armor;
     this.baseArmor = armor;

@@ -1,7 +1,7 @@
 import './css/styles.css';
 import $ from "jquery";
 import { takeInput, waltDisney, player1 } from "./overworldState.js";
-import {assignPlayer} from "./battleState.js";
+import {assignPlayer, enterBattle} from "./battleState.js";
 
 let gameState = "titleScreen";
 
@@ -31,5 +31,6 @@ export function changeGameState(string){
     $('.battle-action').hide();
   } else if (gameState === "battleState") {
     $('.battle-action').show();
+    enterBattle();
   }
 }
