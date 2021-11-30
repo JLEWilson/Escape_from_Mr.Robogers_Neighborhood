@@ -14,9 +14,6 @@ body{
   flex: 2;
   order: 2;
 }
-.over-world{
-  display:none;
-}
 .character-create{
   height: 10em;
   border: black solid 2px;
