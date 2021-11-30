@@ -5,6 +5,7 @@ export default class Entity{
     this.ram = mana;
     this.disk = attackDamage;
     this.fanUsage = armor;
+    this.baseArmor = armor;
     this.isAlive = true;
   }
   attack(target){
@@ -22,7 +23,10 @@ export default class Entity{
     }
   }
   guard(){
-    //Halves damage taken for 1 turn
+    this.fanUsage *= 3;
+  }
+  resetGuard(){
+    this.fanUsage = this.baseArmor;
   }
   die(){
     this.isAlive = false;
@@ -37,25 +41,40 @@ export class PlayerEntity extends Entity{
   }
   setBattleText(enemy){
     this.missText = [
-    "Your aim is bad",
-    enemy.name + " is too cute to hurt",
-    "The " + enemy.name + " is hit for 0 damage!"
-  ];
-  this.attackText = [
-    "You insult the " + enemy.name +". " + enemy.name + " health reduced to " + enemy.cpu,
-  ];
-  this.deathText = [
-    "You defeated the " + enemy.name + "!!!!", 
-  ];
-  this.randomMissIndex = Math.floor( Math.random() * this.missText.length);
-  this.randomAttackIndex = Math.floor( Math.random() * this.attackText.length);
-  this.randomDeathIndex = Math.floor( Math.random() * this.deathText.length);
+      "Your aim is bad",
+      enemy.name + " is too cute to hurt",
+      "The " + enemy.name + " is hit for 0 damage!"
+    ];
+    this.attackText = [
+      "You insult the " + enemy.name +". " + enemy.name + " health reduced to " + enemy.cpu,
+    ];
+    this.deathText = [
+      "You suck", 
+    ];
+    this.guardText = [
+      "You brace yourself. Defense x3!"
+    ];
+    this.randomMissIndex = Math.floor( Math.random() * this.missText.length);
+    this.randomAttackIndex = Math.floor( Math.random() * this.attackText.length);
+    this.randomDeathIndex = Math.floor( Math.random() * this.deathText.length);
+    this.randomGuardIndex = Math.floor( Math.random() * this.guardText.length);
   }
   restore(stat){
     console.log(stat);
   }
-  debugCode(){
-    //attack with mana
+  debugCode(enemy){
+    const damage = this.disk * 3 - enemy.fanUsage;
+    if(this.ram < 5){
+      return false;
+    } else {
+      this.ram -= 5;
+      if (damage <= 0) {
+        return 0;
+      } else {
+        return damage;
+      }
+    }
+    
   }
   useItem(item){
     console.log(item);
@@ -67,35 +86,35 @@ export class PlayerEntity extends Entity{
 export class EnemyEntity extends Entity{
   constructor(name){
     switch (name){
-      case "unknown error":
-        super(name, 15, 0, 9, 4);
-        this.skills = [
-          {
-            skillDamage: 10,
-            skillText: "You bang your head on the closest hard object in frustration",
-          }
-        ];
-        break;
-      case "bug":
-        super(name, 5, 0, 3, 1);
-        this.skills = [
-          {
-            skillDamage: 5,
-            skillText: "Stops you from running correctly"
-          }
-        ];
-        break;
-      case "typo":
-        super(name, 7, 3, 5, 2);
-        this.skills = [
-          {
-            skillDamage: 8,
-            skillText: "The typo moves too fast for you to see it"            
-          }
-        ];
-        break;        
-      default:
-        super();
+    case "unknown error":
+      super("Unknown Error", 8, 0, 9, 2);
+      this.skills = [
+        {
+          skillDamage: 10,
+          skillText: "You bang your head on the closest hard object in frustration",
+        }
+      ];
+      break;
+    case "bug":
+      super("Bug", 5, 0, 3, 1);
+      this.skills = [
+        {
+          skillDamage: 5,
+          skillText: "Stops you from running correctly"
+        }
+      ];
+      break;
+    case "typo":
+      super("Typo", 7, 3, 5, 2);
+      this.skills = [
+        {
+          skillDamage: 8,
+          skillText: "The typo moves too fast for you to see it"            
+        }
+      ];
+      break;        
+    default:
+      super();
     }
   }
   setBattleText(player){
@@ -110,11 +129,16 @@ export class EnemyEntity extends Entity{
       "You fixed the bug!",
       "This bug was an easy fix",
     ];
+    this.blockedText = [
+      "100% of damage blocked!",
+      "The " + this.name + " was not strong enough to break your guard."
+    ];
     this.randomMissIndex = Math.floor( Math.random() * this.missText.length);
     this.randomAttackIndex = Math.floor( Math.random() * this.attackText.length);
     this.randomDeathIndex = Math.floor( Math.random() * this.deathText.length);
-    }
-    wait(){
+    this.randomBlockedIndex = Math.floor( Math.random() * this.blockedText.length);
+  }
+  wait(){
 
   }
 }
