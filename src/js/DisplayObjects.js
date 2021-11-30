@@ -1,8 +1,11 @@
+import { createRoom } from "../index.js";
+
 export class Animator{
   constructor(){
     this.screen = document.getElementById('primaryDisplayModule');
     this.screen.height = window.innerHeight*0.7;
     this.screen.width = this.screen.height;
+
     this.brush = this.screen.getContext('2d');
     this.q = this.screen.height/10;
   }
@@ -47,6 +50,7 @@ export class Player{
         this.x = this.x-1;
       }
     }
+    this.levelSet.Rooms[this.z][this.x][this.y].action(this);
   }
 }
 
@@ -54,7 +58,7 @@ export class LevelMap{
   constructor(){
     this.Rooms = [
       [
-        [new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black')],
+        [new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Door(true,'door',8,4,1),new Tile(false, 'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black')],
         [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
         [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
         [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
@@ -64,14 +68,58 @@ export class LevelMap{
         [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
         [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
         [new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black')]
+      ],
+      [
+        [new Tile(false,'void'),new Tile(false,'void'),new Tile(false,'black'),new Tile(false, 'black'),new Door(true,'door',8,3,2),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'void'),new Tile(false,'void')],
+        [new Tile(false,'void'),new Tile(false,'void'),new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black'),new Tile(false,'void'),new Tile(false,'void')],
+        [new Tile(false,'void'),new Tile(false,'void'),new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black'),new Tile(false,'void'),new Tile(false,'void')],
+        [new Tile(false,'void'),new Tile(false,'void'),new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black'),new Tile(false,'void'),new Tile(false,'void')],
+        [new Tile(false,'void'),new Tile(false,'void'),new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black'),new Tile(false,'void'),new Tile(false,'void')],
+        [new Tile(false,'void'),new Tile(false,'void'),new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black'),new Tile(false,'void'),new Tile(false,'void')],
+        [new Tile(false,'void'),new Tile(false,'void'),new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black'),new Tile(false,'void'),new Tile(false,'void')],
+        [new Tile(false,'void'),new Tile(false,'void'),new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black'),new Tile(false,'void'),new Tile(false,'void')],
+        [new Tile(false,'void'),new Tile(false,'void'),new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black'),new Tile(false,'void'),new Tile(false,'void')],
+        [new Tile(false,'void'),new Tile(false,'void'),new Tile(false,'black'),new Tile(false,'black'),new Door(true,'door',1,3,0),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'void'),new Tile(false,'void')]
+      ],
+      [
+        [new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false, 'black'),new Tile(false, 'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black')],
+        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
+        [new Tile(false,'black'),new Tile(false,'table'),new Tile(false,'table'),new Tile(false,'table'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
+        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
+        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'table'),new Tile(false,'table'),new Tile(false,'table'),new Tile(false,'black')],
+        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
+        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
+        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
+        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
+        [new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Door(true,'door',1,4,1),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black')]
       ]
     ];
   }
 }
 
+
+
 export class Tile{
   constructor(transparency, texture){
     this.transparent = transparency;
     this.texture = texture;
+  }
+  action(player){
+    return false;
+  }
+}
+
+export class Door extends Tile{
+  constructor(trans,text,x,y,z){
+    super(trans, text);
+    this.dX = x;
+    this.dY = y;
+    this.dZ = z;
+  }
+  action(player){
+    player.x = this.dX;
+    player.y = this.dY;
+    player.z = this.dZ;
+    createRoom();
   }
 }
