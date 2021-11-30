@@ -1,6 +1,7 @@
 import './css/styles.css';
 import $ from "jquery";
 import { Player, Enemy } from './js/entity';
+import { LevelMap, Player, Animator} from './js/DisplayObjects.js';
 
 //make an instance of each object
 
