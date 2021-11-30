@@ -1,4 +1,4 @@
-import { createRoom } from "../index.js";
+import { createRoom } from "../overworldState.js";
 
 export class Animator{
   constructor(){
