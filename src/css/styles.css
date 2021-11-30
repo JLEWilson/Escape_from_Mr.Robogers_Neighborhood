@@ -1,29 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
 body{
-  background-color: cyan;
-}
-.character-create{
-  height: 10em;
-  border: black solid 2px;
-}
-#gameDiv {
-  display:none;
+  background-image: url('../assets/binary-code.png');
+  color:rgb(230, 227, 227);
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  margin: 0;
 }
 
-.story-action{
+/* ---title screen--- */
+
+#titlescreen {
+  padding-top: 1vh;
+  height: 99vh;
+  box-sizing: border-box;
+}
+
+#titleFlexbox {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#title-img {
+  height: 80vh;
+}
+
+#title-btn {
+  border: none;
+  font-size: 1.8rem;
+  font-weight: bold;
+  padding: .25em .5em;
+  border-radius: .25em;
+  color:rgb(11, 83, 83);
+  margin: .5em .25em;
+}
+
+#title-btn:hover {
+  background-color:rgba(31, 31, 31, .8);
+  color:rgb(230, 227, 227);
+  cursor: pointer;
+}
+
+#titleScreen h1 {
+  font-size: 3rem;
+  background-color: rgba(31, 31, 31, .8);
+  width: 60%;
+  margin: 0 auto;
+  padding: .5em;
+  border-radius: .25em;
+}
+
+#character-create-form {
+  width: 40vw;
+  margin-top: 1em;
+  background-color: rgba(31, 31, 31, .8);
+}
+
+#titleScreen label {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: .5em;
+  margin-top: 30vh;
+  border: none;
+}
+
+#titleScreen input {
+  font-size: 1.5rem;
+  border-radius: .5em;
+}
+
+/* ---overworld--- */
+
+#gameDiv {
   display: none;
-  height: 10em;
-  border: black solid 2px;
 }
-.battle-action{
-  display: none;
-  height: 10em;
-  border: black solid 2px;
+
+#gameDivFlexbox {
+  margin-top: 5em;
+  display: flex;
+  justify-content: space-around;
 }
-.story-area{
-  overflow-y: auto;
-  height: 10em;
-  border: black solid 2px;
-}
+
 canvas {
   position: absolute;
 }
@@ -59,4 +116,42 @@ canvas {
 
 .door {
   background-color: white;
+}
+
+/* ---text-box--- */
+
+#text-box {
+  background-color: rgba(31, 31, 31, .8);
+  width: 40vw;
+  height: 66.5vh;
+  border-radius: .5em;
+  padding: 1em;
+  overflow: auto;
+}
+
+/* battle-box */
+
+#attack {
+  display: none;
+}
+
+#guard {
+  display: none;
+}
+
+#debug-code {
+  display: none;
+}
+
+#battle-box button {
+  border: none;
+  border-radius: .5em;
+  font-size: 1.3rem;
+  padding: .5em 1em;
+  margin: .5em;
+}
+
+#battle-btn-flex {
+  display: flex;
+  justify-content: space-around;
 }

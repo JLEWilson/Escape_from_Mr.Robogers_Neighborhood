@@ -5,25 +5,40 @@
 <body>
   <div class="character-create" id="titleScreen">
     <h1>Escape from Mr.Robogers Neighborhood</h1>
-    <form id="character-create-form">
-      <label for="charName">Name your character</label>
-      <input type="text" name="charName" id="charName" maxlength="16" required></textarea>
-      <br>
-      <button type="submit">Create</button>
-    </form>
+    <div id="titleFlexbox">
+      <img id="title-img" src="./assets/Robot-angry.png">
+      <form id="character-create-form">
+        <label for="charName">Name your character</label>
+        <input type="text" name="charName" id="charName" maxlength="16" required></textarea>
+        <br>
+        <button id="title-btn" type="submit">Create</button>
+      </form>
+    </div>
   </div>
   <div id="gameDiv">
-    <div class="over-world">
-      <canvas id="primaryDisplayModule"></canvas>
-      <div id="map-background"></div>
-    </div>
-    <div class="battle-action">
-      <button id="attack" type='button'>Attack</button><br>
-      <button id="guard" type='button'>Guard</button><br>
-      <button id="debug-code" type='button'>Debug Code</button>
-    </div>
-    <div id="story-box">
-        <div class='story-area'></div>
+    <div id="gameDivFlexbox">
+      <div class="over-world">
+        <canvas id="primaryDisplayModule"></canvas>
+        <div id="map-background"></div>
+      </div>
+      <div id="text-box">
+        <div id="story-box">
+            <div class='story-area'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus doloribus et eius culpa, laboriosam unde? Doloremque perferendis iure adipisci porro maxime accusantium commodi! Sed blanditiis labore, molestias consequuntur ipsa odit cumque iste officia. Laborum ad deserunt pariatur libero illum fugiat culpa reiciendis incidunt molestiae omnis tenetur nesciunt, ratione eos. Sed, deserunt magni eligendi enim nam officiis ut ipsum asperiores autem! Vero consequuntur voluptas id tenetur perferendis ratione eius culpa itaque dolorem, reprehenderit nemo quibusdam aliquid possimus assumenda cumque ullam obcaecati veritatis sed non eligendi repellendus a quisquam incidunt? Laborum aspernatur nihil veniam tempora numquam ducimus eius natus ab officiis recusandae.
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit modi, voluptatibus suscipit possimus illo quisquam repudiandae quis odio labore eius reiciendis nobis dolor aliquid sint rem vero! Incidunt distinctio nulla blanditiis, aliquid iste, ut quod delectus sit, eveniet odit architecto possimus enim? Veritatis delectus tenetur, exercitationem quo autem omnis sunt esse eum officiis est commodi odit corrupti consectetur velit minima illum praesentium quia. Fuga quia, dicta perspiciatis, voluptas explicabo, nobis doloribus iure molestias corrupti sunt quaerat? Magnam odit molestias amet fugit possimus, obcaecati et. Sit.</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita sequi maiores officiis autem, velit non, error vitae reiciendis cum quo, laborum distinctio quas iste ab ex voluptate impedit veritatis esse assumenda debitis facere amet provident! Obcaecati error ratione magni doloremque, voluptatem ex! Perferendis tenetur, repellat laborum nemo eaque accusantium. Officiis corrupti, delectus velit quasi esse voluptatibus veritatis quo. Molestias laudantium doloremque quis provident! Consectetur?</p>
+              <p>Lorem ipsum dolor sit amet.</p>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur eius cum veniam explicabo perferendis, ducimus, itaque enim praesentium et repellendus harum dolor quas voluptatum facere non? Cupiditate rerum laborum praesentium, magnam quia minus officia!</p>
+              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex eius aut provident incidunt deleniti commodi tenetur et? Dicta, quibusdam non deserunt dolore et corporis fuga doloribus voluptates, nostrum rerum nesciunt! Nulla quia, corrupti assumenda incidunt ab veritatis officiis soluta alias unde, aliquam inventore. Delectus voluptatum cupiditate facilis vero dolorum deleniti repudiandae autem facere iste dolorem pariatur debitis tempore minus nesciunt numquam inventore dicta quisquam tenetur, corporis alias eum! Aliquam deserunt totam facere dolore id, praesentium esse ipsam accusantium necessitatibus exercitationem aperiam cupiditate, fuga quod odio modi autem impedit unde possimus quis perspiciatis qui hic officiis nisi. Quasi doloremque temporibus error?</p>
+            </div>
+        </div>
+        <div id="battle-box" class="battle-action">
+          <div id="battle-btn-flex">
+            <button id="attack" type='button'>Attack</button><br>
+            <button id="guard" type='button'>Guard</button><br>
+            <button id="debug-code" type='button'>Debug Code</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
