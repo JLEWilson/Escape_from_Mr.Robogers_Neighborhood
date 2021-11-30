@@ -8,8 +8,8 @@ import { LevelMap, Player, Animator} from './js/DisplayObjects.js';
 let waltDisney = new Animator();
 let gameMaps = new LevelMap();
 let player1 = new Player(waltDisney, gameMaps);
-let player;
-const enemy = new EnemyEntity("bug");
+let playerEntity;
+const enemy = new EnemyEntity("unknown error");
 
 export function createRoom() {
   $("#map-background").html("");
@@ -26,34 +26,34 @@ createRoom();
 $('#character-create-form').submit((event) => {
   event.preventDefault();
   const name = $('#charName').val();
-  player = new PlayerEntity(name, 30, 30, 5, 3);
-  player.setBattleText(enemy);
-  enemy.setBattleText(player);
-  $('.story-area').append("<p>Greetings " + player.name + "!!!</p>");
+  playerEntity = new PlayerEntity(name, 30, 30, 5, 3);
+  playerEntity.setBattleText(enemy);
+  enemy.setBattleText(playerEntity);
+  $('.story-area').append("<p>Greetings " + playerEntity.name + "!!!</p>");
   $('.character-create').hide();
   $('.battle-action').show();
 });
 
 $('#attack').click(() => {
-  const attack = player.attack(enemy);
+  const attack = playerEntity.attack(enemy);
   if(attack > 0){
     enemy.takeDamage(attack);
-    player.setBattleText(enemy);
+    playerEntity.setBattleText(enemy);
     if(enemy.isAlive){ 
-      $('.story-area').append("<p>" + player.attackText[player.randomAttackIndex] + "</p>");
-      console.log(player.attackText[0]);
-      console.log(player.randomAttackIndex);
-      const enemyAttack = enemy.attack(player);
+      $('.story-area').append("<p>" + playerEntity.attackText[playerEntity.randomAttackIndex] + "</p>");
+      console.log(playerEntity.attackText[0]);
+      console.log(playerEntity.randomAttackIndex);
+      const enemyAttack = enemy.attack(playerEntity);
       if (enemyAttack > 0){
-        player.takeDamage(enemyAttack);
-        enemy.setBattleText(player);
-        if(player.isAlive) {
+        playerEntity.takeDamage(enemyAttack);
+        enemy.setBattleText(playerEntity);
+        if(playerEntity.isAlive) {
           $('.story-area').append("<p>" + enemy.attackText[enemy.randomAttackIndex] + "</p>");
         } else {
-          $('.story-area').append("<p>" + player.deathText[player.randomDeathIndex] + "</p>");
+          $('.story-area').append("<p>" + playerEntity.deathText[playerEntity.randomDeathIndex] + "</p>");
         }
       } else {
-        enemy.setBattleText(player);
+        enemy.setBattleText(playerEntity);
         $('.story-area').append("<p>" + enemy.missText[enemy.randomMissIndex] + "</p>");
       }
     } else {
@@ -61,11 +61,63 @@ $('#attack').click(() => {
       $('.story-area').append("<p>" + enemy.deathText[enemy.randomDeathIndex] + "</p>");
     }
   } else {
-    player.setBattleText(enemy);
-    $('.story-area').append("<p>" + player.missText[player.randomMissText] + "</p>");
+    playerEntity.setBattleText(enemy);
+    $('.story-area').append("<p>" + playerEntity.missText[playerEntity.randomMissText] + "</p>");
   }
 })
 
+$('#guard').click(()=>{
+  playerEntity.guard();
+  $('.story-area').append("<p>" + playerEntity.guardText[playerEntity.randomGuardIndex] + "</p>");
+  const enemyAttack = enemy.attack(playerEntity);
+    if (enemyAttack > 0){
+      playerEntity.takeDamage(enemyAttack);
+      enemy.setBattleText(playerEntity);
+      if(playerEntity.isAlive) {
+        $('.story-area').append("<p>" + enemy.attackText[enemy.randomAttackIndex] + "</p>");
+      } else {
+        $('.story-area').append("<p>" + playerEntity.deathText[playerEntity.randomDeathIndex] + "</p>");
+      }
+    } else {
+      enemy.setBattleText(playerEntity);
+      $('.story-area').append("<p>" + enemy.blockedText[enemy.randomBlockedIndex] + "</p>");
+    }
+  playerEntity.resetGuard();
+});
+
+$('#debug-code').click(()=>{
+  const attack = playerEntity.debugCode(enemy);
+  if(!attack){
+    $('.story-area').append("<p> Not enough Ram! Select a different action.</p>");
+  } else if(attack > 0){
+    enemy.takeDamage(attack);
+    playerEntity.setBattleText(enemy);
+    if(enemy.isAlive){ 
+      $('.story-area').append("<p>" + playerEntity.attackText[playerEntity.randomAttackIndex] + "</p>");
+      console.log(playerEntity.attackText[0]);
+      console.log(playerEntity.randomAttackIndex);
+      const enemyAttack = enemy.attack(playerEntity);
+      if (enemyAttack > 0){
+        playerEntity.takeDamage(enemyAttack);
+        enemy.setBattleText(playerEntity);
+        if(playerEntity.isAlive) {
+          $('.story-area').append("<p>" + enemy.attackText[enemy.randomAttackIndex] + "</p>");
+        } else {
+          $('.story-area').append("<p>" + playerEntity.deathText[playerEntity.randomDeathIndex] + "</p>");
+        }
+      } else {
+        enemy.setBattleText(playerEntity);
+        $('.story-area').append("<p>" + enemy.missText[enemy.randomMissIndex] + "</p>");
+      }
+    } else {
+      $('.story-area').append("<p>Your attack put " + enemy.name + " below 0 cpu!</p>");
+      $('.story-area').append("<p>" + enemy.deathText[enemy.randomDeathIndex] + "</p>");
+    }
+  } else {
+    playerEntity.setBattleText(enemy);
+    $('.story-area').append("<p>" + playerEntity.missText[playerEntity.randomMissText] + "</p>");
+  }
+});
 
 //make a controller
 
