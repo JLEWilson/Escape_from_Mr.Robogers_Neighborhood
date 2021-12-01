@@ -1,8 +1,17 @@
-# _Project Title_
+# _Escape from Mr.Robogers Nieghborhood_
+#### _an RPG game made for the first team week for Epicodus School._
 
-#### By _**Jacob Wilson**_
+![Robot illustration](src/assets/Robot-angry.png)
 
-#### _a brief description_
+#### Coded By 
+#### _**Jacob Wilson**_
+#### _**Zach Wilson**_
+#### _**Matt Luker**_
+#### _**Skylar Brockbank**_
+#### _**Christina Welch**_
+#### Artwork By _****_
+#### Robot Art By _**Joezhuang at vecteezy.com**_
+#### Music By _**Matt Luker**_
 
 ## Technologies Used
 
@@ -10,29 +19,23 @@
 * _JavaScript_
 * _CSS_
 * _Markdown_
-* _Bootstrap_
 * _JQuery_
-* _Jest_
 * _Webpack_
 * _Lint_
 
 ## Description
 
-_a detailed description_
+_You are a student studying programming for the first time. Your working on one of your big end of week projects when you begin to feel yourself drift off to sleep. your project, Mr.Roboger, takes over your dream and sends you into his neighborhood. you will need to fight bugs and errors in your code to escape the neighborhood and finish your project on time._
 
 ## Setup/Installation Requirements
 
-Make sure to include information for package.jason and install
+* _Clone this repository to your desktop_
+* _Navigate to Escape_from_Mr.Robogers_Neighborhood in your terminal_
+* _type npm install and press enter_
+* _once everything has installed type npm run build and enter_
+* _you can then type npm run start and enter which will open the project._
 
-* _You can find the github repository [here]()_
-* _Click the code button, and copy the https link_
-* _In your in git bash or your preferred git terminal navigate to the directory you would like to store the project_
-* _Enter: "git clone" followed by the https link_
-* _Now that the repository is cloned to your computer, right click on the folder and click open with vs code_
-* _Now type npm install in your terminal to install the packages used in the project, you may have to run install twice due to the size of the packages_
-* _You can now view the project by typing npm run start in your terminal_
-* _OR_
-* _You can find the deployed project on gh-pages (here)[]
+_if you are unsure how to clone repositories from github see https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository_
 
 ## Known Bugs
 
@@ -42,4 +45,4 @@ Make sure to include information for package.jason and install
 
 _If you run into any problems or find a bug, would like to reach me for a separate reason, feel free to send me an email @jacobleeeugenewilson@gmail.com with details of your issue._
 
-Copyright (c) _11/12/2021_ _Jacob Wilson(s)_
+Copyright (c) _11/12/2021_ _Jacob Wilson(s)_ _Zach Wilson_ _Matt Luker_ _Skylar Brockbank_ _Christina Welch_
