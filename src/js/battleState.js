@@ -1,6 +1,6 @@
 import $ from "jquery";
-import { PlayerEntity, EnemyEntity } from './js/entity';
-import { changeGameState } from './index.js';
+import { PlayerEntity, EnemyEntity } from './entity';
+import { changeGameState } from '../index.js';
 
 //make an instance of each object
 export let playerEntity;

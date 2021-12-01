@@ -1,7 +1,7 @@
 import './css/styles.css';
 import $ from "jquery";
-import { takeInput, waltDisney, player1 } from "./overworldState.js";
-import {assignPlayer, enterBattle} from "./battleState.js";
+import { takeInput, waltDisney, player1 } from "./js/overworldState.js";
+import {assignPlayer, enterBattle} from "./js/battleState.js";
 
 let gameState = "titleScreen";
 

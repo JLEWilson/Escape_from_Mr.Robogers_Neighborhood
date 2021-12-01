@@ -1,8 +1,7 @@
-import { createRoom } from "../overworldState.js";
+import { createRoom } from "./overworldState.js";
 import { changeGameState } from "../index.js";
-import { assignEnemy } from "../battleState.js";
-import { updatePlayerHealthUI } from "../battleState.js";
-import {playerEntity} from "../battleState.js";
+import { assignEnemy } from "./battleState.js";
+import { updatePlayerHealthUI, playerEntity } from "./battleState.js";
 
 export class Animator{
   constructor(){

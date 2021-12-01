@@ -1,5 +1,5 @@
 import $ from "jquery";
-import { LevelMap, Player, Animator} from './js/DisplayObjects.js';
+import { LevelMap, Player, Animator} from './DisplayObjects.js';
 
 //make an instance of each object
 export let waltDisney = new Animator();
