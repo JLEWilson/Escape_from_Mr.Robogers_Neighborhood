@@ -1,8 +1,10 @@
 import './css/styles.css';
 import $ from "jquery";
-import { takeInput, waltDisney, player1 } from "./overworldState.js";
-import {assignPlayer, enterBattle} from "./battleState.js";
-
+import { takeInput, waltDisney, player1 } from "./js/overworldState.js";
+import {assignPlayer, enterBattle} from "./js/battleState.js";
+import AudioManager from "./js/AudioManager.js";
+import { BattleScreen } from './js/battleInterface.js';
+export let bs = new BattleScreen();
 let gameState = "titleScreen";
 
 export function loopA(){
@@ -11,9 +13,25 @@ export function loopA(){
   player1.drawSelf();
   if(gameState ==="overWorld") {
     setTimeout(()=>{requestAnimationFrame(loopA);} , 1000/12);
+  }else{
+    setTimeout(()=>{requestAnimationFrame(loopB);} , 1000/12);
   }
 }
-
+export function loopB(){
+  waltDisney.clear();
+  bs.drawBackground();
+  bs.drawBoxes();
+  bs.drawFlavor();
+  bs.drawOptionBoxes();
+  if(gameState !="overWorld") {
+    setTimeout(()=>{requestAnimationFrame(loopB);} , 1000/12);
+  }else{
+    setTimeout(()=>{requestAnimationFrame(loopA);} , 1000/12);
+  }
+}
+$('#combat').click(()=>{
+  changeGameState("battleState");
+});
 $('#character-create-form').submit((event) => {
   event.preventDefault();
   $("#gameDiv").show();
@@ -29,6 +47,7 @@ export function changeGameState(string){
     loopA();
     $('.character-create').hide();
     $('.battle-action').hide();
+    AudioManager.makeSomeNoise();
   } else if (gameState === "battleState") {
     $('.battle-action').show();
     enterBattle();

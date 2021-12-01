@@ -1,8 +1,6 @@
-import { createRoom } from "../overworldState.js";
+import { createRoom } from "./overworldState.js";
 import { changeGameState } from "../index.js";
-import { assignEnemy } from "../battleState.js";
-import { updatePlayerHealthUI } from "../battleState.js";
-import {playerEntity} from "../battleState.js";
+import { playerEntity, assignEnemy, updatePlayerHealthUI } from "./battleState.js";
 
 export class Animator{
   constructor(){
@@ -231,7 +229,6 @@ export class ConveyerButton extends Tile{
     this.convToDisableZ = z;
   }
   action(player){
-    console.log("it works")
     player.levelSet.Rooms[this.convToDisableX][this.convToDisableY][this.convToDisableZ].direction = ""
   }
 }
@@ -243,7 +240,6 @@ export class BattleTile extends Tile{
     this.enemyName = enemyName    
   }
   action(player){
-    console.log("hi")
     assignEnemy(this.enemyName);
     changeGameState("battleState");
   }
