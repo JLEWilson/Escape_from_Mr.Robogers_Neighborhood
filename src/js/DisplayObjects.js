@@ -1,3 +1,4 @@
+import $ from "jquery";
 import { createRoom } from "./overworldState.js";
 import { changeGameState } from "../index.js";
 import { assignEnemy } from "./battleState.js";
@@ -63,10 +64,10 @@ export class LevelMap{
       [
         [new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Door(true,'door',8,4,1),new Tile(false, 'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black')],
         [new Tile(false,'black'),new Tile(true,'white'),new Conveyer(true,'white','N'),new Conveyer(true,'white','E'),new Conveyer(true,'white','S'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
+        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new MessageTile(true,'white','Salutations'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
+        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new MessageTile(true,'white','Salutations'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
         [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
-        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
-        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
-        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
+        [new Tile(false,'black'),new Tile(true,'white'),new Key(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
         [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
         [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new BattleTile(true,'white','bug'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
         [new Tile(false,'black'),new ConveyerButton(true,'white',0,1,3),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
@@ -230,7 +231,6 @@ export class ConveyerButton extends Tile{
     this.convToDisableZ = z;
   }
   action(player){
-    console.log("it works")
     player.levelSet.Rooms[this.convToDisableX][this.convToDisableY][this.convToDisableZ].direction = ""
   }
 }
@@ -238,13 +238,30 @@ export class ConveyerButton extends Tile{
 export class BattleTile extends Tile{  
   constructor(trans, text, enemyName){
     super(trans, text);
-    this.texture = "white"
-    this.enemyName = enemyName    
+    this.texture = "white";
+    this.enemyName = enemyName;    
   }
-  action(player){
-    console.log("hi")
+
+  action(player){    
     assignEnemy(this.enemyName);
     changeGameState("battleState");
+    this.texture = this.enemyName;
+    console.log(this)
+    createRoom();
   }
 }
 
+export class MessageTile extends Tile{
+  constructor(trans, text, message){
+    super(trans, text);
+    this.texture = "white";
+    this.message = message;
+    this.active = true;
+  }
+  action(player){  
+    if (this.active) {  
+      $('.story-area').prepend("<p>"+ this.message + "</p>");
+      this.active = false;
+    }
+  }
+}
