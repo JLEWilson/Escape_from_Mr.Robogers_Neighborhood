@@ -241,7 +241,7 @@ export class BattleTile extends Tile{
     this.texture = "white";
     this.enemyName = enemyName;    
   }
-  
+
   action(player){    
     assignEnemy(this.enemyName);
     changeGameState("battleState");
