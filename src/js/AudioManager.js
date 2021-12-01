@@ -2,21 +2,28 @@ export default class AudioManager{
   constructor(){
 
   }
-  // static playAudio2(){
-  //   let audio = new Audio();
-  //   audio.src = 'https://docs.google.com/uc?export=download&id=1sbTDsZ--XS_ktYMx2KGM_DYBjb-_s2WT';
-  //   audio.play();
-  // }
-  static playAudio(){
+  static startAudio(string, bool){
     //let audioContext = new AudioContext();
-    let audio = document.getElementById('over-world-audio');
+    let audio = document.getElementById(string);
+    audio.loop = bool;
+    audio.currentTime = 0;
     if(audio.paused){
       audio.play();
     }
-    //audio.setAttribute('autoplay');
-    //const track = audioContext.createMediaElementSource(audio);
-    //track.connect(audioContext.destination);
   }
+  static pauseAudio(string){
+    let audio = document.getElementById(string);
+    if(!audio.paused){
+      audio.pause();
+    }
+  }
+  static continueAudio(string){
+    let audio = document.getElementById(string);
+    if(audio.paused){
+      audio.play();
+    }
+  }
+  continue
 }
 
 // const music = new Audio('adf.wav');
