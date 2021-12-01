@@ -1,13 +1,16 @@
 import { waltDisney } from "./overworldState.js";
 import NightCity from "../assets/images/NightCity.gif";
-import { bs } from "../index.js";
+import { gameState } from "../index.js";
+let event = [];
 let img = new Image();
 let imgReady = false;
 img.src = NightCity;
 img.onload = function(){
   imgReady = true;
 };
-document.addEventListener('click',bs.checkForSelect(e));
+document.addEventListener('click', function(e){
+  event = e;
+});
 
 
 export class BattleScreen{
@@ -41,10 +44,19 @@ export class BattleScreen{
     let screenPos = waltDisney.screen.getBoundingClientRect();
     return [e.clientX - screenPos.left, e.clientY-screenPos.top];
   }
-  checkForSelect(e){
-    let mousePosition = this.getMousePos(e);
-    if(mousePosition[0]>this.attack[0] && mousePosition<(this.attack[0]+waltDisney.screen.width/2) && mousePosition[1]>(attack[1]-30) && mousePosition[1]<attack[1]){
-      console.log('attack triggered');
-    }
+  checkForSelect(){
+    let mousePosition = this.getMousePos(event);
+    if(gameState ==='battleState'){
+      if(mousePosition[0]>this.attack[0] && mousePosition[0]<(this.attack[0]+waltDisney.screen.width/2) && mousePosition[1]>(this.attack[1]-30) && mousePosition[1]<this.attack[1]){
+        alert('attack triggered');
+      }
+      if(mousePosition[0]>this.guard[0] && mousePosition[0]<(this.guard[0]+waltDisney.screen.width/2) && mousePosition[1]>(this.guard[1]-30) && mousePosition[1]<this.guard[1]){
+        alert('guard triggered');
+      }
+      if(mousePosition[0]>this.magic[0] && mousePosition[0]<(this.magic[0]+waltDisney.screen.width/2) && mousePosition[1]>(this.magic[1]-30) && mousePosition[1]<this.magic[1]){
+        alert('magic triggered');
+      }
+
+    } 
   }
 }

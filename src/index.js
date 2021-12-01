@@ -3,9 +3,19 @@ import $ from "jquery";
 import { takeInput, waltDisney, player1 } from "./js/overworldState.js";
 import {assignPlayer, enterBattle} from "./js/battleState.js";
 import AudioManager from "./js/AudioManager.js";
+
+//new code S (and a change to gamestate)
 import { BattleScreen } from './js/battleInterface.js';
-export let bs = new BattleScreen();
-let gameState = "titleScreen";
+
+let bs = new BattleScreen();
+export let gameState = "titleScreen";
+
+//new code A
+document.addEventListener('click', function(){
+  console.log('this ran');
+  bs.checkForSelect();});
+//end new code A
+
 
 export function loopA(){
   takeInput();
@@ -17,6 +27,8 @@ export function loopA(){
     setTimeout(()=>{requestAnimationFrame(loopB);} , 1000/12);
   }
 }
+
+//new code B
 export function loopB(){
   waltDisney.clear();
   bs.drawBackground();
@@ -29,6 +41,8 @@ export function loopB(){
     setTimeout(()=>{requestAnimationFrame(loopA);} , 1000/12);
   }
 }
+//end new code B
+
 $('#combat').click(()=>{
   changeGameState("battleState");
 });
