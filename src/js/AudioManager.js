@@ -1,22 +1,26 @@
-// import overworld from '../assets/music/ow.mp3';
+export default class AudioManager{
+  constructor(){
 
-// let overworldAudio = new Audio();
-// overworldAudio.src = overworld;
+  }
+  // static playAudio2(){
+  //   let audio = new Audio();
+  //   audio.src = 'https://docs.google.com/uc?export=download&id=1sbTDsZ--XS_ktYMx2KGM_DYBjb-_s2WT';
+  //   audio.play();
+  // }
+  static playAudio(){
+    //let audioContext = new AudioContext();
+    let audio = document.getElementById('over-world-audio');
+    if(audio.paused){
+      audio.play();
+    }
+    //audio.setAttribute('autoplay');
+    //const track = audioContext.createMediaElementSource(audio);
+    //track.connect(audioContext.destination);
+  }
+}
 
-// export default class AudioManager{
-//   constructor(){
-//     this.songs = {
-//       "Overworld": overworldAudio
-//     };
-//   }
-//   playAudio(){
-//     this.songs.Overworld.play();
-//   }
-//   static makeSomeNoise(){
-//     overworldAudio.onload = function(){
-//       overworldAudio.play();
-//     };
-//   }
-// }
-
-
+// const music = new Audio('adf.wav');
+// music.play();
+// music.loop =true;
+// music.playbackRate = 2;
+// music.pause();

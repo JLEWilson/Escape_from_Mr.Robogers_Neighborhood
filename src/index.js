@@ -61,7 +61,7 @@ export function changeGameState(string){
     loopA();
     $('.character-create').hide();
     $('.battle-action').hide();
-    AudioManager.makeSomeNoise();
+    AudioManager.playAudio();
   } else if (gameState === "battleState") {
     $('.battle-action').show();
     enterBattle();
