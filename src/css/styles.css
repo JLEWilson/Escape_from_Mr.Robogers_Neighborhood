@@ -207,8 +207,29 @@ canvas {
   image-rendering: crisp-edges;
   image-rendering: pixelated;
 }
-.conveyer {
+.N {
+  background-image: url('../assets/img/slide-up.png');
+  background-size: cover;
+  image-rendering: auto;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+.E {
+  background-image: url('../assets/img/slide-right.png');
+  background-size: cover;
+  image-rendering: auto;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+.S {
   background-image: url('../assets/img/slide-down.png');
+  background-size: cover;
+  image-rendering: auto;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+.W {
+  background-image: url('../assets/img/slide-left.png');
   background-size: cover;
   image-rendering: auto;
   image-rendering: crisp-edges;

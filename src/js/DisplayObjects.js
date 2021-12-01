@@ -3,6 +3,9 @@ import { createRoom } from "./overworldState.js";
 import { changeGameState } from "../index.js";
 import { assignEnemy } from "./battleState.js";
 import { updatePlayerHealthUI, playerEntity } from "./battleState.js";
+import Messages from "./messages.js";
+
+const messages = new Messages
 
 export class Animator{
   constructor(){
@@ -20,8 +23,8 @@ export class Animator{
 
 export class Player{
   constructor(ani,levelSet){
-    this.x = 3;
-    this.y = 3;
+    this.x = 5;
+    this.y = 7;
     this.z = 0;
     this.animator = ani;
     this.width = 1*this.animator.q;
@@ -62,53 +65,65 @@ export class LevelMap{
   constructor(){
     this.Rooms = [
       [
-        [new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Door(true,'door',8,4,1),new Tile(false, 'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black')],
-        [new Tile(false,'black'),new Tile(true,'white'),new Conveyer(true,'white','N'),new Conveyer(true,'white','E'),new Conveyer(true,'white','S'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
-        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new MessageTile(true,'white','Salutations'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
-        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new MessageTile(true,'white','Salutations'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
-        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
-        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
-        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
-        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new BattleTile(true,'white','unknownError'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
-        [new Tile(false,'black'),new ConveyerButton(true,'white',0,1,3),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
-        [new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black')]
+        [new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'void')],
+        [new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'black'), new Tile(false, 'black'), new Tile(false, 'void')],
+        [new Tile(false, 'black'), new Door(true,'door',2,8,1), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new MessageTile(true,'white',messages.rmMes[0]), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void')],
+        [new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'black'), new Tile(false, 'black'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void')]
+      ], 
+      [
+        [new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black')],
+        [new Tile(false, 'black'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black')],
+        [new Tile(false, 'black'), new Tile(true, 'white'), new Key(true,'key',7,0,1,messages.kMes[0]), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(true, 'white'), new MessageTile(true,'white','PLS LET THE MESSAGE WORK'), new Tile(true, 'white'), new Door(true,'door',5,2,0)],
+        [new Tile(false, 'black'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black')],
+        [new Tile(false, 'black'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'black')],
+        [new Tile(false, 'black'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'black')],
+        [new Tile(false, 'black'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'black')],
+        [new LockedDoor(false,'lockedDoor',8,8,2), new MessageTile(true,'white',messages.lkDrMes[0]), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'black')],
+        [new Tile(false, 'black'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'black')],
+        [new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black')]
       ],
       [
-        [new Tile(false,'void'),new Tile(false,'void'),new Tile(false,'black'),new Tile(false, 'black'),new Door(true,'door',8,3,2),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'void'),new Tile(false,'void')],
-        [new Tile(false,'void'),new Tile(false,'void'),new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black'),new Tile(false,'void'),new Tile(false,'void')],
-        [new Tile(false,'void'),new Tile(false,'void'),new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black'),new Tile(false,'void'),new Tile(false,'void')],
-        [new Tile(false,'void'),new Tile(false,'void'),new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black'),new Tile(false,'void'),new Tile(false,'void')],
-        [new Tile(false,'void'),new Tile(false,'void'),new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black'),new Tile(false,'void'),new Tile(false,'void')],
-        [new Tile(false,'void'),new Tile(false,'void'),new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black'),new Tile(false,'void'),new Tile(false,'void')],
-        [new Tile(false,'void'),new Tile(false,'void'),new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black'),new Tile(false,'void'),new Tile(false,'void')],
-        [new Tile(false,'void'),new Tile(false,'void'),new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black'),new Tile(false,'void'),new Tile(false,'void')],
-        [new Tile(false,'void'),new Tile(false,'void'),new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black'),new Tile(false,'void'),new Tile(false,'void')],
-        [new Tile(false,'void'),new Tile(false,'void'),new Tile(false,'black'),new Tile(false,'black'),new Door(true,'door',1,3,0),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'void'),new Tile(false,'void')]
+        [new Tile(false, 'black'), new Door(true,'door',9,5,3), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void')],
+        [new Tile(false, 'black'), new MessageTile(true,'white',messages.rmMes[2]), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'void')],
+        [new Tile(false, 'black'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void')],
+        [new Tile(false, 'black'), new Conveyer(true,'white','E'), new Conveyer(true,'white','E'), new Conveyer(true,'white','E'), new Conveyer(true,'white','E'), new Conveyer(true,'white','E'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Conveyer(true,'white','E'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Conveyer(true,'white','E'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'void')],
+        [new Tile(false, 'black'), new Conveyer(true,'white','E'), new Tile(true, 'white'), new Conveyer(true,'white','E'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void')],
+        [new Tile(false, 'black'), new Conveyer(true,'white','E'), new Tile(true, 'white'), new Conveyer(true,'white','E'), new Conveyer(true,'white','E'), new Conveyer(true,'white','E'), new Conveyer(true,'white','E'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void')],
+        [new Tile(false, 'black'), new Conveyer(true,'white','E'), new Tile(true, 'white'), new Conveyer(true,'white','E'), new Conveyer(true,'white','E'), new Conveyer(true,'white','E'), new Conveyer(true,'white','E'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black')],
+        [new Tile(false, 'black'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new MessageTile(true,'white',messages.rmMes[1]), new Tile(true, 'white'), new Door(true,'door',3,1,1)],
+        [new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black')]
       ],
       [
-        [new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false, 'black'),new Tile(false, 'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black')],
-        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
-        [new Tile(false,'black'),new Tile(false,'table'),new Tile(false,'table'),new Tile(false,'table'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
-        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
-        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'table'),new Tile(false,'table'),new Tile(false,'table'),new Tile(false,'black')],
-        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
-        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
-        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
-        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
-        [new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Door(true,'door',5,5,3),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black')]
+        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new LockedDoor(false,'lockedDoor',5,5,0), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Tile(false, 'black'), new Key(true,'key',0,5,3,messages.kMes[1]), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new MessageTile(true,'white',"work"), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new TrapDoor(true,'white',6,5,4), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new MessageTile(true,'white',"work"), new Tile(false, 'black'), new Door(true,'door',7,7,4), new Tile(false, 'black'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Door(true,'door',0,1,2), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'void')]
       ],
       [
-        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Door(true,'door',3,3,0), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'void')],
-        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void')],
-        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void')],
-        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void')],
-        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void')],
-        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void')],
-        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void')],
-        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void')],
-        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void')],
-        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Door(true,'door',3,5,0), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'void')]
-    ]
+        [new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(true, 'white'), new MessageTile(true,'white',messages.rmMes[3]), new Tile(true,'white',), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Door(true,'door',7,7,3), new Tile(false, 'black'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void')]
+      ],
     ];
   }
 }
@@ -174,13 +189,13 @@ export class TrapDoor extends Tile{
 export class Conveyer extends Tile{
   constructor(trans,text,direction){
     super(trans, text); 
-    this.direction = direction   
+    this.direction = direction
   }
   action(player){
     setTimeout(()=>{
     player.move(this.direction);    
-    this.texture = "conveyer"
-    createRoom() ;} , 1000/12);      
+    this.texture = this.direction;
+    createRoom() ;} , 1000/12);
   }
 }
 
@@ -209,17 +224,23 @@ export class Hole extends Tile{
 //button reveal tile
 
 export class Key extends Tile{
-  constructor(trans, text, x, y, z){
+  constructor(trans, text, x, y, z, message){
     super(trans, text);
     this.doorToUnlockX = x;
     this.doorToUnlockY = y;
     this.doorToUnlockZ = z;
+    this.message = message;
+    this.active = true;
   }
   action(player){    
-    player.levelSet.Rooms[this.doorToUnlockX][this.doorToUnlockY][this.doorToUnlockZ].transparent = true;
-    player.levelSet.Rooms[this.doorToUnlockX][this.doorToUnlockY][this.doorToUnlockZ].texture = "door";
+    player.levelSet.Rooms[this.doorToUnlockZ][this.doorToUnlockX][this.doorToUnlockY].transparent = true;
+    player.levelSet.Rooms[this.doorToUnlockZ][this.doorToUnlockX][this.doorToUnlockY].texture = "door";
     this.texture = "white";
     createRoom();
+    if (this.active) {  
+      $('.story-area').prepend("<p>"+ this.message + "</p>");
+      this.active = false;
+    }        
   }
 }
 
@@ -246,7 +267,6 @@ export class BattleTile extends Tile{
     assignEnemy(this.enemyName);
     changeGameState("battleState");
     this.texture = this.enemyName;
-    console.log(this)
     createRoom();
   }
 }
