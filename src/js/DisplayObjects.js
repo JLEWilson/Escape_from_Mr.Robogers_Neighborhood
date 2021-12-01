@@ -67,9 +67,9 @@ export class LevelMap{
         [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new MessageTile(true,'white','Salutations'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
         [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new MessageTile(true,'white','Salutations'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
         [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
-        [new Tile(false,'black'),new Tile(true,'white'),new Key(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
         [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
-        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new BattleTile(true,'white','bug'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
+        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
+        [new Tile(false,'black'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new BattleTile(true,'white','unknownError'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
         [new Tile(false,'black'),new ConveyerButton(true,'white',0,1,3),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(true,'white'),new Tile(false,'black')],
         [new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black'),new Tile(false,'black')]
       ],
@@ -218,8 +218,8 @@ export class Key extends Tile{
   action(player){    
     player.levelSet.Rooms[this.doorToUnlockX][this.doorToUnlockY][this.doorToUnlockZ].transparent = true;
     player.levelSet.Rooms[this.doorToUnlockX][this.doorToUnlockY][this.doorToUnlockZ].texture = "door";
-    this.texture = "white";    
-    createRoom();    
+    this.texture = "white";
+    createRoom();
   }
 }
 

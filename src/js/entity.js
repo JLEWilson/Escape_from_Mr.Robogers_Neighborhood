@@ -88,7 +88,7 @@ export class PlayerEntity extends Entity{
 export class EnemyEntity extends Entity{
   constructor(name){
     switch (name){
-    case "unknown error":
+    case "unknownError":
       super("Unknown Error", 8, 0, 9, 2);
       this.skills = [
         {
