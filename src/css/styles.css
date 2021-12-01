@@ -76,13 +76,17 @@ body{
 }
 
 #gameDivFlexbox {
+  position:relative;
   margin-top: 5em;
   display: flex;
   justify-content: space-around;
 }
-
+.over-world {
+  position: relative;
+}
 canvas {
   position: absolute;
+  left:0;
 }
 #map-background{
   display: grid;
@@ -107,27 +111,21 @@ canvas {
 .table {
   background-color: rgb(66, 51, 40);
 }
-
 .hole {
   background-color:rgb(138, 74, 49);
 }
-
 .table {
   background-color: rgb(66, 51, 40);
 }
-
 .door {
   background-color: white;
 }
-
 .lockedDoor {
   background-color: rgba(255, 255, 255, 0.808);
 }
-
 .key {
   background-color: gold;
 }
-
 .conveyer {
   background-color: wheat;
 }
