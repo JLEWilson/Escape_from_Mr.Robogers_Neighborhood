@@ -129,9 +129,7 @@ canvas {
 .conveyer {
   background-color: wheat;
 }
-.bug {
-  background-image: url('../assets/Bug.png');
-}
+
 /* ---text-box--- */
 
 #text-box {
