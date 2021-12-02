@@ -114,7 +114,8 @@ body{
   border-radius: .25em;
 }
 #hud {
-  background-color: rgba(0, 0, 0, 0.534);
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 1em;
 }
 #character-create-form {
   width: 40vw;
@@ -213,6 +214,20 @@ canvas {
   image-rendering: crisp-edges;
   image-rendering: pixelated;
 }
+.gate {
+  background-image: url('../assets/img/Gate_tile_.png');
+  background-size: cover;
+  image-rendering: auto;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+.switch {
+  background-image: url('../assets/img/Gate_Button_.png');
+  background-size: cover;
+  image-rendering: auto;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
 .key {
   background-image: url('../assets/img/key.png');
   background-size: cover;
@@ -269,6 +284,13 @@ canvas {
   image-rendering: crisp-edges;
   image-rendering: pixelated;
 }
+.imposterSyndrome {
+  background-image: url('../assets/img/Imposter_Syndrome.png');
+  background-size: cover;
+  image-rendering: auto;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
 
 /* ---text-box--- */
 
@@ -281,7 +303,39 @@ canvas {
   overflow: auto;
 }
 
+/* ---Death screen--- */
+
+#death-screen {
+  background-color: rgba(0,60,121, .9);
+  width: 60%;
+  margin: 12em auto;
+  border-radius: 1em;
+  padding: 1em;
+  display: none;
+}
+
+#death-btn {
+  border: none;
+  border-radius: .5em;
+  padding: .5em 1em;
+  color: rgb(0,60,121);
+}
+
+#death-btn:hover {
+  background-color: black;
+  color:rgb(230, 227, 227);
+}
+
+#death-screen p {
+  margin-top: 1em;
+  font-size: 1.3rem;
+}
+
 /* ---win screen--- */
+
+#win-screen {
+  display: none;
+}
 
 #win-screen-text {
   background-color: rgb(0,60,121);

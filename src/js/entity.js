@@ -26,6 +26,12 @@ export default class Entity{
   }
   guard(){
     this.fanUsage *= 3;
+    this.ram -= 5;
+    if(this.cpu > this.maxCpu -5){
+      this.cpu = this.maxCpu
+    } else {
+      this.cpu += 5
+    }
   }
   resetGuard(){
     this.fanUsage = this.baseArmor;
@@ -61,8 +67,9 @@ export class PlayerEntity extends Entity{
     this.randomDeathIndex = Math.floor( Math.random() * this.deathText.length);
     this.randomGuardIndex = Math.floor( Math.random() * this.guardText.length);
   }
-  restore(stat){
-    console.log(stat);
+  restore(){
+    this.cpu = this.maxCpu;
+    this.ram = this.maxRam;
   }
   debugCode(enemy){
     const damage = this.disk * 3 - enemy.fanUsage;
@@ -90,39 +97,39 @@ export class EnemyEntity extends Entity{
     switch (name){
     case "unknownError":
       super("Unknown Error", 8, 0, 7, 2);
-      this.skills = [
-        {
-          skillDamage: 10,
-          skillText: "You bang your head on the closest hard object in frustration",
-        }
-      ];
+      // this.skills = [
+      //   {
+      //     skillDamage: 10,
+      //     skillText: "You bang your head on the closest hard object in frustration",
+      //   }
+      // ];
       break;
     case "bug":
       super("Bug", 5, 0, 3, 1);
-      this.skills = [
-        {
-          skillDamage: 5,
-          skillText: "Stops you from running correctly"
-        }
-      ];
+      // this.skills = [
+      //   {
+      //     skillDamage: 5,
+      //     skillText: "Stops you from running correctly"
+      //   }
+      // ];
       break;
     case "typo":
       super("Typo", 7, 3, 5, 2);
-      this.skills = [
-        {
-          skillDamage: 8,
-          skillText: "The typo moves too fast for you to see it"            
-        }
-      ];
+      // this.skills = [
+      //   {
+      //     skillDamage: 8,
+      //     skillText: "The typo moves too fast for you to see it"            
+      //   }
+      // ];
       break;
       case "imposterSyndrome":
         super("Imposter Syndrome", 15, 3, 10, 3);
-        this.skills = [
-          {
-            skillDamage: 12,
-            skillText: "You doubt yourself and begin to loose hope"            
-          }
-        ];
+        // this.skills = [
+        //   {
+        //     skillDamage: 12,
+        //     skillText: "You doubt yourself and begin to loose hope"            
+        //   }
+        // ];
         break;        
     default:
       super();

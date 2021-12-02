@@ -116,11 +116,26 @@ export function changeGameState(string){
   } else if (gameState === "battleState") {
     AudioManager.pauseAudio('over-world-audio')
     AudioManager.startAudio('fight-audio', true); 
-    $('.battle-action').show(); 
   } else if (gameState === "titleScreen") {
     $("#before-title").hide();
     $("#titleScreen").show();
   }
 }
-//Set audio on player death
+
+$('#death-btn').click(function() {
+  window.location.reload();
+})
+
+/* 
+Audio command for player death state
+AudioManager.pauseAudio('over-world-audio');
+AudioManager.pauseAudio('fight-audio');
+AudioManager.startAudio('death-audio');
+
+Audio command for victory
+AudioManager.pauseAudio('fight-audio');
+AudioManager.pauseAudio('over-world-audio');
+STILL NEED SOUND FOR VICTORY
+AudioManager.startAudio('win-audio');
+*/
 AudioManager.setVolumeLevels();

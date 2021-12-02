@@ -51,8 +51,6 @@ export class Player{
     if(direction === 'E'){
       if(this.levelSet.Rooms[this.z][this.x+1][this.y].transparent){
         this.x = this.x+1;
-        console.log('triggered');
-        console.log(this.x);
       }
     }
     if(direction === 'W'){
@@ -106,22 +104,22 @@ export class LevelMap{
       [
         [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new LockedDoor(false,'lockedDoor',8,5,5), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'void')],
         [new Tile(false, 'void'), new Tile(false, 'black'), new Key(true,'key',0,5,3,messages.kMes[1]), new Tile(true, 'white'), new Tile(true, 'white'), new MessageTile(true, 'white',messages.lkDrMes[1]), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void')],
-        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new MessageTile(true,'white',"work"), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new MessageTile(true,'white',messages.rmMes[4]), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void')],
         [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new TrapDoor(true,'white',3,5,4), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void')],
         [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void')],
         [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void')],
         [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void')],
-        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new MessageTile(true,'white',"This place doesn't look so bad."), new Tile(false, 'black'), new Door(true,'door',7,6,4), new Tile(false, 'black'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new MessageTile(true,'white',messages.rmMes[5]), new Tile(false, 'black'), new Door(true,'door',7,6,4), new Tile(false, 'black'), new Tile(false, 'void')],
         [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'void')],
         [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Door(true,'door',0,1,2), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'void')]
       ],
       [
         [new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void')],
-        [new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void')],
-        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Tile(false, 'black'), new GateSwitch(true,'switch',5,2,4), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void')],
         [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(true, 'white'), new MessageTile(true,'white',messages.rmMes[3]), new Tile(true,'white',), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void')],
         [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void')],
-        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void')],
+        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'gate'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void')],
         [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'void')],
         [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new Door(true,'door',6,7,3), new Tile(false, 'black'), new Tile(false, 'void')],
         [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'void')],
@@ -129,14 +127,14 @@ export class LevelMap{
       ],
       [
         [new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void')],
-        [new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'void')],
+        [new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'void')],
         [new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(true, 'white'), new BattleTile(true,'white','typo'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black')],
         [new Door(true,'door',5,5,0), new Tile(true, 'white'), new BattleTile(true,'white','unknownError'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(true, 'white'), new BattleTile(true,'white','bug'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'black')],
         [new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new BattleTile(true,'white','typo'), new Tile(true, 'white'), new Tile(true, 'white'), new BattleTile(true,'white','bug'), new Tile(false, 'black'), new Conveyer(true,'white','W'), new Tile(false, 'black')],
         [new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Conveyer(true,'white','W'), new Tile(false, 'void')],
         [new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'void'), new Conveyer(true,'white','W'), new Conveyer(true,'white','N')],
-        [new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'black'), new MessageTile(true,'white',"FIGHT FIGHT FIGHT"), new Conveyer(true,'white','S'), new Conveyer(true,'white','E'), new Tile(false, 'void'), new Conveyer(true,'white','W')],
-        [new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new Conveyer(true,'white','E'), new Conveyer(true,'white','S'), new Conveyer(true,'white','W')],
+        [new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'black'), new MessageTile(true,'white',messages.rmMes[6]), new Conveyer(true,'white','S'), new Conveyer(true,'white','E'), new Tile(false, 'void'), new Conveyer(true,'white','W')],
+        [new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new Conveyer(true,'white','S'), new Conveyer(true,'white','S'), new Conveyer(true,'white','W')],
         [new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'black'), new Door(true,'door',5,5,0), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'void'), new Tile(false, 'void')]
       ],
     ];
@@ -303,6 +301,38 @@ export class MessageTile extends Tile{
     if (this.active) {  
       $('.story-area').prepend("<p>"+ this.message + "</p>");
       this.active = false;
+    }
+  }
+}
+
+export class HealTile extends Tile{
+  constructor(trans, text){
+    super(trans, text);
+    this.message = "~All CPU and RAM restored!!!~";
+  }
+  action(player){
+    player.restore()
+$('.story-area').prepend("<p>"+ this.message + "</p>")
+  }
+}
+
+export class GateSwitch extends Tile {
+  constructor(trans, text, x, y, z){
+    super(trans, text);
+    this.gateToggleX = x;
+    this.gateToggleY = y;
+    this.gateToggleZ = z;
+    this.texture = 'switch'
+  }
+  action(player){
+    if (player.levelSet.Rooms[this.gateToggleZ][this.gateToggleX][this.gateToggleY].transparent) {
+    player.levelSet.Rooms[this.gateToggleZ][this.gateToggleX][this.gateToggleY].transparent = false;
+    player.levelSet.Rooms[this.gateToggleZ][this.gateToggleX][this.gateToggleY].texture = 'gate'
+      createRoom();
+    } else {
+      player.levelSet.Rooms[this.gateToggleZ][this.gateToggleX][this.gateToggleY].transparent = true;
+      player.levelSet.Rooms[this.gateToggleZ][this.gateToggleX][this.gateToggleY].texture = 'white'
+      createRoom();
     }
   }
 }

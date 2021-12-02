@@ -43,6 +43,8 @@ export function attack() {
           $('.story-area').prepend("<p>" + enemy.attackText[enemy.randomAttackIndex] + "</p>");
         } else {
           $('.story-area').prepend("<p>" + playerEntity.deathText[playerEntity.randomDeathIndex] + "</p>");
+          $('#gameDiv').hide();
+          $('#death-screen').show();
         }
       } else {
         enemy.setBattleText(playerEntity);
@@ -60,7 +62,10 @@ export function attack() {
 }
 
 export function guard(){
-  playerEntity.guard();
+  if(playerEntity.cpu < 5){
+    $('.story-area').prepend("<p>Not enough RAM, choose another skill!</p>");
+  } else {
+    playerEntity.guard();
   $('.story-area').prepend("<p>" + playerEntity.guardText[playerEntity.randomGuardIndex] + "</p>");
   const enemyAttack = enemy.attack(playerEntity);
   if (enemyAttack > 0){
@@ -71,13 +76,15 @@ export function guard(){
       $('.story-area').prepend("<p>" + enemy.attackText[enemy.randomAttackIndex] + "</p>");
     } else {
       $('.story-area').prepend("<p>" + playerEntity.deathText[playerEntity.randomDeathIndex] + "</p>");
-      alert("You have died");
+      $('#gameDiv').hide();
+      $('#death-screen').show();
     }
   } else {
     enemy.setBattleText(playerEntity);
     $('.story-area').prepend("<p>" + enemy.blockedText[enemy.randomBlockedIndex] + "</p>");
   }
   playerEntity.resetGuard();
+  }
 }
 
 export function magic(){
@@ -101,6 +108,8 @@ export function magic(){
           $('.story-area').prepend("<p>" + enemy.attackText[enemy.randomAttackIndex] + "</p>");
         } else {
           $('.story-area').prepend("<p>" + playerEntity.deathText[playerEntity.randomDeathIndex] + "</p>");
+          $('#gameDiv').hide();
+          $('#death-screen').show();
         }
       } else {
         enemy.setBattleText(playerEntity);

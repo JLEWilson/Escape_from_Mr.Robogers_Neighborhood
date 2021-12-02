@@ -1,6 +1,6 @@
 import { waltDisney } from "./overworldState.js";
 import NightCity from "../assets/images/NightCity.gif";
-import characterfront  from "../assets/img/character-front.png";
+import characterfront  from "../assets/img/character-front-zoom.png";
 import { gameState } from "../index.js";
 import { attack, guard, magic} from "./battleState.js";
 let event = [];
