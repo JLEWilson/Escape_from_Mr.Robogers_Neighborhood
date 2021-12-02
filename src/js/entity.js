@@ -54,7 +54,7 @@ export class PlayerEntity extends Entity{
       "The " + enemy.name + " is hit for 0 damage!"
     ];
     this.attackText = [
-      "You insult the " + enemy.name +". " + enemy.name + " health reduced to " + enemy.cpu,
+      "You insult the " + enemy.name +". " + enemy.name + " cCPU reduced to " + enemy.cpu,
     ];
     this.deathText = [
       "You suck", 
