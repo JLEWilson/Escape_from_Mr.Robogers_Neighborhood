@@ -1,6 +1,6 @@
 <html lang="en-US">
 <head>
-  <title>Project Template</title>
+  <title>Escape from Mr.Robogers Neighborhood</title>
 </head>
 <body>
   <div id="intro">
@@ -22,6 +22,11 @@
     <h1>Your in my neighborhood now...</h1>
     <button id="before-title-btn">></button>
   </div>
+  <div id="musicDiv">
+    <audio id='over-world-audio' controls="controls">
+      <source src="https://docs.google.com/uc?export=download&id=1sbTDsZ--XS_ktYMx2KGM_DYBjb-_s2WT">
+    </audio>
+  </div>
   <div class="character-create" id="titleScreen">
     <h1>Escape from Mr.Robogers Neighborhood</h1>
     <div id="titleFlexbox">
@@ -30,6 +35,7 @@
         <label for="charName">Name your character</label>
         <input type="text" name="charName" id="charName" maxlength="16" required></textarea>
         <br>
+        <button id='combat' type='button'>Enter Combat </button>
         <button id="title-btn" type="submit">Create</button>
       </form>
     </div>

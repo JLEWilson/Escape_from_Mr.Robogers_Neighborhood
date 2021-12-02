@@ -6,7 +6,7 @@ export function beepBoop(number) {
   const threeRegex = new RegExp("3");
 
   for (let i = 0; i <= number; i++) {
-    numberArray.push(i.toString())
+    numberArray.push(i.toString());
   }
 
   numberArray.forEach(function(num, index) {
@@ -15,6 +15,6 @@ export function beepBoop(number) {
     } else if (num.match(threeRegex)) {
       numberArray[index] = "Won't you be my neighbor?";
     }
-  })
-  return numberArray.join(", ")
+  });
+  return numberArray.join(", ");
 }

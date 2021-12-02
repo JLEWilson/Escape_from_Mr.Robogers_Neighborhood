@@ -8,7 +8,8 @@ let enemy;
 
 export function assignPlayer(name){
   playerEntity = new PlayerEntity(name, 30, 30, 5, 3);
-
+  updatePlayerHealthUI();
+  updatePlayerManaUI();
   $('.story-area').prepend("<p>Greetings " + playerEntity.name + "!!!</p>");
 }
 export function assignEnemy(name){
@@ -23,14 +24,18 @@ export function updatePlayerHealthUI(){
 export function updatePlayerManaUI(){
   $('#player-mana').html(playerEntity.ram);
 }
-
+export function winGame(){
+  //show win game div
+}
+export function loseGame(){
+  //show lose game div
+}
 export function enterBattle(){
   $('#attack').show();
   $('#guard').show();
   $('#debug-code').show();
   $('#exit-battle').hide();
 }
-
 function exitBattle(){
   $('#attack').hide();
   $('#guard').hide();
@@ -72,7 +77,7 @@ $('#attack').click(() => {
     playerEntity.setBattleText(enemy);
     $('.story-area').prepend("<p>" + playerEntity.missText[playerEntity.randomMissText] + "</p>");
   }
-})
+});
 
 $('#guard').click(()=>{
   playerEntity.guard();

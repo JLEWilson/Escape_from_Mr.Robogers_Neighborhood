@@ -4,8 +4,8 @@ import { takeInput, waltDisney, player1 } from "./js/overworldState.js";
 import {assignPlayer, enterBattle} from "./js/battleState.js";
 import { beepBoop } from "./js/intro";
 
-let gameState = "intro";
-let numberClicked = 0
+export let gameState = "intro";
+let numberClicked = 0;
   $("#number-form").submit(function(event) {
     event.preventDefault();
     numberClicked += 1;
@@ -29,7 +29,7 @@ let numberClicked = 0
         $("#response").text("...")
         break;
       case 6:
-        $("#response").text("...well little programmer")
+        $("#response").text("...well little programmer");
         break;
       case 7:
         $("#intro-normal-img").hide();
@@ -39,10 +39,24 @@ let numberClicked = 0
       case 8:
         $("#intro").hide();
         $("#before-title").show();
-        $("#before-title-text").fadeIn(10000)
+        $("#before-title-text").fadeIn(10000);
         break;
     }
-  })
+  });
+import AudioManager from "./js/AudioManager.js";
+
+//new code S (and a change to gamestate)
+import { BattleScreen } from './js/battleInterface.js';
+
+let bs = new BattleScreen();
+
+
+//new code A
+document.addEventListener('click', function(){
+  console.log('this ran');
+  bs.checkForSelect();});
+//end new code A
+
 
 export function loopA(){
   takeInput();
@@ -50,17 +64,34 @@ export function loopA(){
   player1.drawSelf();
   if(gameState ==="overWorld") {
     setTimeout(()=>{requestAnimationFrame(loopA);} , 1000/12);
+  }else{
+    setTimeout(()=>{requestAnimationFrame(loopB);} , 1000/12);
   }
 }
+
+//new code B
+export function loopB(){
+  waltDisney.clear();
+  bs.drawBackground();
+  bs.drawBoxes();
+  bs.drawFlavor();
+  bs.drawOptionBoxes();
+  if(gameState !="overWorld") {
+    setTimeout(()=>{requestAnimationFrame(loopB);} , 1000/12);
+  }else{
+    setTimeout(()=>{requestAnimationFrame(loopA);} , 1000/12);
+  }
+}
+//end new code B
 
 $("#intro-skip").click(function() {
   $("#intro").hide();
   changeGameState("titleScreen");
-})
+});
 
 $("#before-title-btn").click(function() {
   changeGameState("titleScreen");
-})
+});
 
 $('#character-create-form').submit((event) => {
   event.preventDefault();
@@ -77,12 +108,13 @@ export function changeGameState(string){
     loopA();
     $('.character-create').hide();
     $('.battle-action').hide();
+    AudioManager.playAudio();
   } else if (gameState === "battleState") {
     $('.battle-action').show();
     enterBattle();
   } else if (gameState === "titleScreen") {
     $("#before-title").hide();
     $("#titleScreen").show();
-    console.log("else if ran")
+      
   }
 }
