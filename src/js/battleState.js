@@ -16,7 +16,7 @@ export function assignEnemy(name){
   enemy = new EnemyEntity(name);
   playerEntity.setBattleText(enemy);
   enemy.setBattleText(playerEntity);
-  $('.story-area').prepend("<p>You have encountered a wild" + enemy.name + "!!!</p>");
+  $('.story-area').prepend("<p>You have encountered a wild " + enemy.name + "!!!</p>");
 }
 export function updatePlayerHealthUI(){
   $('#player-health').html(playerEntity.cpu);
