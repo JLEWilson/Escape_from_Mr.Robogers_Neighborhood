@@ -25,7 +25,7 @@
 
 ## Description
 
-_You are a student studying programming for the first time. Your working on one of your big end of week projects when you begin to feel yourself drift off to sleep. your project, Mr.Roboger, takes over your dream and sends you into his neighborhood. you will need to fight bugs and errors in your code to escape the neighborhood and finish your project on time._
+_You are a student studying programming for the first time. Your working on one of your big end of week projects when you begin to feel yourself drift off to sleep. your project, Mr.Roboger, takes over your dream and sends you into his neighborhood. you will need to fight bugs and errors in your code to escape the neighborhood and finish your project on time..._
 
 ## Setup/Installation Requirements
 
