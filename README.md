@@ -36,7 +36,7 @@ _You are a student studying programming for the first time. Your working on one 
 * _you can then type npm run start and enter which will open the project._
 _if you are unsure how to clone repositories from github see https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository_
 
-* _Alternatively you can find the project published on Github pages [here](https://jlewilson.github.io/escape_from_mr_rogers_neighborhood/)._ 
+* _Alternatively you can find the project published on Github pages [here](https://jlewilson.github.io/Escape_from_Mr.Robogers_Neighborhood/)._ 
 ## Known Bugs
 
 * _Player can get stuck in the 5th room conveyers if they hit any buttons while the character is sliding_
