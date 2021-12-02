@@ -1,6 +1,6 @@
 <html lang="en-US">
 <head>
-  <title>Project Template</title>
+  <title>Escape from Mr.Robogers Neighborhood</title>
 </head>
 <body>
   <div id="intro">
@@ -22,6 +22,23 @@
     <h1>Your in my neighborhood now...</h1>
     <button id="before-title-btn">></button>
   </div>
+  <div id="musicDiv">
+    <audio id='over-world-audio' controls="controls">
+      <source src="https://docs.google.com/uc?export=download&id=1J5jW7DEtMi6149ZagymZbjpz2RDfMELR">
+    </audio>
+    <audio id='item-audio' controls="controls">
+      <source src="https://docs.google.com/uc?export=download&id=1C-ZU8p8HMuf9ytCeo4GCKO18e1DuQ5Ws">
+    </audio>
+    <audio id='fight-audio' controls="controls">
+      <source src="https://docs.google.com/uc?export=download&id=16pRRHjYZEI378rThoDNv8_g2JKmkDIhX">
+    </audio>
+    <audio id='death-audio' controls="controls">
+      <source src="https://docs.google.com/uc?export=download&id=1PHdzsGqwzxu8crMiWSozpmbctOFBaugU">
+    </audio>
+    <audio id='creepy-rogers-audio' controls="controls">
+      <source src="https://docs.google.com/uc?export=download&id=1HDICfIcu_lmmp1yvPFHoYPap2gQVpPi9">
+    </audio>
+  </div>
   <div class="character-create" id="titleScreen">
     <h1>Escape from Mr.Robogers Neighborhood</h1>
     <div id="titleFlexbox">
@@ -30,6 +47,7 @@
         <label for="charName">Name your character</label>
         <input type="text" name="charName" id="charName" maxlength="16" required></textarea>
         <br>
+        <button id='combat' type='button'>Enter Combat </button>
         <button id="title-btn" type="submit">Create</button>
       </form>
     </div>

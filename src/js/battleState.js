@@ -8,7 +8,8 @@ let enemy;
 
 export function assignPlayer(name){
   playerEntity = new PlayerEntity(name, 30, 30, 5, 3);
-
+  updatePlayerHealthUI();
+  updatePlayerManaUI();
   $('.story-area').prepend("<p>Greetings " + playerEntity.name + "!!!</p>");
 }
 export function assignEnemy(name){
@@ -16,6 +17,7 @@ export function assignEnemy(name){
   playerEntity.setBattleText(enemy);
   enemy.setBattleText(playerEntity);
   $('.story-area').prepend("<p>You have encountered a " + enemy.name + "!!!</p>");
+  return enemy.name;
 }
 export function updatePlayerHealthUI(){
   $('#player-health').html(playerEntity.cpu);
@@ -23,24 +25,29 @@ export function updatePlayerHealthUI(){
 export function updatePlayerManaUI(){
   $('#player-mana').html(playerEntity.ram);
 }
-
+export function winGame(){
+  //show win game div
+}
+export function loseGame(){
+  //show lose game div
+}
 export function enterBattle(){
   $('#attack').show();
   $('#guard').show();
   $('#debug-code').show();
   $('#exit-battle').hide();
 }
-
 function exitBattle(){
   $('#attack').hide();
   $('#guard').hide();
   $('#debug-code').hide();
   $('#exit-battle').show();
+  changeGameState('overWorld');
 }
 
 //buttons
 
-$('#attack').click(() => {
+export function attack() {
   const attack = playerEntity.attack(enemy);
   if(attack > 0){
     enemy.takeDamage(attack);
@@ -72,29 +79,30 @@ $('#attack').click(() => {
     playerEntity.setBattleText(enemy);
     $('.story-area').prepend("<p>" + playerEntity.missText[playerEntity.randomMissText] + "</p>");
   }
-})
+}
 
-$('#guard').click(()=>{
+export function guard(){
   playerEntity.guard();
   $('.story-area').prepend("<p>" + playerEntity.guardText[playerEntity.randomGuardIndex] + "</p>");
   const enemyAttack = enemy.attack(playerEntity);
-    if (enemyAttack > 0){
-      playerEntity.takeDamage(enemyAttack);
-      updatePlayerHealthUI();
-      enemy.setBattleText(playerEntity);
-      if(playerEntity.isAlive) {
-        $('.story-area').prepend("<p>" + enemy.attackText[enemy.randomAttackIndex] + "</p>");
-      } else {
-        $('.story-area').prepend("<p>" + playerEntity.deathText[playerEntity.randomDeathIndex] + "</p>");
-      }
+  if (enemyAttack > 0){
+    playerEntity.takeDamage(enemyAttack);
+    updatePlayerHealthUI();
+    enemy.setBattleText(playerEntity);
+    if(playerEntity.isAlive) {
+      $('.story-area').prepend("<p>" + enemy.attackText[enemy.randomAttackIndex] + "</p>");
     } else {
-      enemy.setBattleText(playerEntity);
-      $('.story-area').prepend("<p>" + enemy.blockedText[enemy.randomBlockedIndex] + "</p>");
+      $('.story-area').prepend("<p>" + playerEntity.deathText[playerEntity.randomDeathIndex] + "</p>");
+      alert("You have died");
     }
+  } else {
+    enemy.setBattleText(playerEntity);
+    $('.story-area').prepend("<p>" + enemy.blockedText[enemy.randomBlockedIndex] + "</p>");
+  }
   playerEntity.resetGuard();
-});
+}
 
-$('#debug-code').click(()=>{
+export function magic(){
   const attack = playerEntity.debugCode(enemy);
   if(!attack){
     $('.story-area').prepend("<p> Not enough Ram! Select a different action.</p>");
@@ -129,8 +137,4 @@ $('#debug-code').click(()=>{
     playerEntity.setBattleText(enemy);
     $('.story-area').prepend("<p>" + playerEntity.missText[playerEntity.randomMissText] + "</p>");
   }
-});
-
-$('#exit-battle').click(()=>{
-  changeGameState('overWorld');
-});
+}

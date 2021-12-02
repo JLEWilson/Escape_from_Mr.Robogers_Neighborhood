@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
+audio {
+  display: none;
+}
+
 body{
   background-image: url('../assets/img/binary-code.png');
   color:rgb(230, 227, 227);
@@ -109,7 +113,9 @@ body{
   padding: .5em;
   border-radius: .25em;
 }
-
+#hud {
+  background-color: rgba(0, 0, 0, 0.534);
+}
 #character-create-form {
   width: 40vw;
   margin-top: 1em;
