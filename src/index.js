@@ -19,10 +19,10 @@ $("#number-form").submit(function(event) {
     $("#response").text("Hello, weary aspiring programmer. I see you've been working very hard on this project for your programming class.");
     break;
   case 2:
-    $("#response").text("When you first saw the assignment you thought it would be simple. Just change the numbers with 1's into beeps, 2's to boops, and 3's to 'would you be my neighbor.' The Mr.Rogers twist makes you chuckle a bit as you get to work on the assignment.");
+    $("#response").text("When you first saw the assignment you thought it would be simple. Just change the numbers with 1's into beeps, 2's to boops, and 3's to 'won't you be my neighbor?' The Mr.Rogers twist makes you chuckle a bit as you get to work on the assignment.");
     break;
   case 3:
-    $("#response").text("You quickly learn this assignment is more difficult than you thought. Code begins to merge together in your head and errors begin to pile up. There's beeps where there should be 'would you be my neighbor' and the boops just wont show up at all!");
+    $("#response").text("You quickly learn this assignment is more difficult than you thought. Code begins to merge together in your head and errors begin to pile up. There's beeps where there should be 'won't you be my neighbor?' and the boops just wont show up at all!");
     break;
   case 4:
     $("#response").text("As you stare at your code you begin to feel tired. You should have gotten to sleep earlier. You're not used to waking up this early. Your eyelids feel heavy and the screen full of code begins to fade.....");
@@ -32,7 +32,7 @@ $("#number-form").submit(function(event) {
     $("#response").text("...");
     break;
   case 6:
-    $("#response").text("...well little programmer");
+    $("#response").text("...Well, little programmer");
     break;
   case 7:
     $("#intro-normal-img").hide();

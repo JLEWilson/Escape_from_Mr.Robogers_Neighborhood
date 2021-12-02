@@ -205,15 +205,15 @@ export class LevelMap{
       ],
       [
         [new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'black'), new Tile(false, 'void')],
-        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(true, 'white'), new LockedDoor(false,'lockedDoor',5,5,0), new Tile(true, 'white'), new LockedDoor(false,'lockedDoor',5,5,0), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'black')],
-        [new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'black'), new Tile(true, 'white'), new LockedDoor(false,'lockedDoor',5,5,0), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black')], 
+        [new Tile(false, 'void'), new Tile(false, 'black'), new BossTile(true, 'unknownError', 'unknownError'), new BossTile(true, 'typo', 'typo'), new BossTile(true, 'unknownError', 'unknownError'), new BossTile(true, 'bug', 'bug'), new BossTile(true, 'typo', 'typo'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'black')],
+        [new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'black'), new BossTile(true, 'unknownError', 'unknownError'), new BossTile(true, 'typo', 'typo'), new BossTile(true, 'unknownError', 'unknownError'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'black'), new Tile(false, 'black')], 
         [new Tile(true, 'heal'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'black'), new BossTile(true, 'bug', 'bug'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false,'black'), new GateSwitch(true, 'switch', 5,7,8), new Tile(false, 'black')],
         [new Tile(true, 'heal'), new Tile(true, 'heal'), new Tile(false, 'black'), new Tile(false, 'void'), new LockedDoor(false,'lockedDoor',5,5,0), new Tile(false, 'void'), new Tile(false,'black'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'black')],
         [new WinTile(true,'door'), new Tile(true, 'heal'), new Tile(true, 'heal'), new BossTile(true, 'imposterSyndrome', 'imposterSyndrome'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'gate'), new Tile(false, 'gate'), new Tile(true, 'white'), new Door(true,'door',5,1,7)],
         [new Tile(true, 'heal'), new Tile(true, 'heal'), new Tile(false, 'black'), new Tile(false, 'void'), new LockedDoor(false,'lockedDoor',5,5,0), new Tile(false, 'void'), new Tile(false,'black'), new Tile(true, 'white'), new Tile(true, 'white'), new Tile(false, 'black')],
-        [new Tile(true, 'heal'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'black'), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false,'black'), new GateSwitch(true, 'switch', 5,6,8), new Tile(false, 'black')],
-        [new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'black'), new Tile(true, 'white'), new LockedDoor(false,'lockedDoor',5,5,0), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'black'),  new Tile(false, 'black')], 
-        [new Tile(false, 'void'), new Tile(false, 'black'), new Tile(true, 'white'), new LockedDoor(false,'lockedDoor',5,5,0), new Tile(true, 'white'), new LockedDoor(false,'lockedDoor',5,5,0), new Tile(true, 'white'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'black')]
+        [new Tile(true, 'heal'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'black'), new BossTile(true, 'unknownError', 'unknownError'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false,'black'), new GateSwitch(true, 'switch', 5,6,8), new Tile(false, 'black')],
+        [new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'black'), new BossTile(true, 'typo', 'typo'), new BossTile(true, 'bug', 'bug'), new BossTile(true, 'typo', 'typo'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'black'),  new Tile(false, 'black')], 
+        [new Tile(false, 'void'), new Tile(false, 'black'), new BossTile(true, 'bug', 'bug'), new BossTile(true, 'unknownError', 'unknownError'), new BossTile(true, 'typo', 'typo'), new BossTile(true, 'bug', 'bug'), new BossTile(true, 'unknownError', 'unknownError'), new Tile(false, 'black'), new Tile(false, 'void'), new Tile(false, 'black')]
       ]
     ];
   }
@@ -272,7 +272,7 @@ export class TrapDoor extends Tile{
     player.x = this.dX;
     player.y = this.dY;
     player.z = this.dZ;
-    this.texture = "void";
+    this.texture = "hole";
     createRoom();
   }
 }

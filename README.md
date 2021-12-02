@@ -1,5 +1,5 @@
 # _Escape from Mr.Robogers Nieghborhood_
-#### _an RPG game made for the first team week for Epicodus School._
+#### _an RPG game made for the first team week of Epicodus School._
 
 ![Robot illustration](src/assets/img/Robot-angry.png)
 
@@ -40,7 +40,7 @@ _if you are unsure how to clone repositories from github see https://docs.github
 ## Known Bugs
 
 * _Player can get stuck in the 5th room conveyers if they hit any buttons while the character is sliding_
-* _audio will stop working after a few times of reloading the game_
+* _audio may stop working after a few times of reloading the game based on connection to google drive_
 
 ## License - [MIT](https://opensource.org/licenses/MIT)
 
