@@ -1,7 +1,7 @@
 # _Escape from Mr.Robogers Nieghborhood_
 #### _an RPG game made for the first team week for Epicodus School._
 
-![Robot illustration](src/assets/Robot-angry.png)
+![Robot illustration](src/assets/img/Robot-angry.png)
 
 #### Coded By 
 #### _**Jacob Wilson**_
