@@ -10,13 +10,13 @@ export default class AudioManager{
     const audio5 = document.getElementById('creepy-rogers-audio');
     const audio6 = document.getElementById('boss-fight-audio');
     const audio7 = document.getElementById('win-game-audio');
-    audio1.volume = 0.2;
-    audio2.volume = 0.4;
-    audio3.volume = 0.2;
-    audio4.volume = 0.2;
-    audio5.volume = 0.2;
-    audio6.volume = 0.2;
-    audio7.volume = 0.2;
+    audio1.volume = 0.1;
+    audio2.volume = 0.3;
+    audio3.volume = 0.1;
+    audio4.volume = 0.1;
+    audio5.volume = 0.1;
+    audio6.volume = 0.1;
+    audio7.volume = 0.1;
     this.setVolume = false;
   }
   static startAudio(string, bool){
