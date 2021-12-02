@@ -3,8 +3,9 @@ import $ from "jquery";
 import { takeInput, waltDisney, player1 } from "./js/overworldState.js";
 import {assignPlayer, enterBattle} from "./js/battleState.js";
 import { beepBoop } from "./js/intro";
+import AudioManager from "./js/AudioManager.js";
+import { BattleScreen } from './js/battleInterface.js';
 
-export let currentEnemy;
 export let gameState = "intro";
 let numberClicked = 0;
 $("#number-form").submit(function(event) {
@@ -45,10 +46,9 @@ $("#number-form").submit(function(event) {
     break;
   }
 });
-import AudioManager from "./js/AudioManager.js";
+
 
 //new code S (and a change to gamestate)
-import { BattleScreen } from './js/battleInterface.js';
 
 let bs = new BattleScreen();
 
@@ -59,7 +59,7 @@ document.addEventListener('click', function(){
   bs.checkForSelect();});
 //end new code A
 
-
+// We might want to change this to not show up during other screens
 export function loopA(){
   takeInput();
   waltDisney.clear();
@@ -99,6 +99,7 @@ $('#character-create-form').submit((event) => {
   event.preventDefault();
   $("#gameDiv").show();
   $("#titleScreen").hide();
+  AudioManager.pauseAudio('creepy-rogers-audio');
   const name = $('#charName').val();
   assignPlayer(name);
   changeGameState('overWorld');
@@ -110,13 +111,16 @@ export function changeGameState(string){
     loopA();
     $('.character-create').hide();
     $('.battle-action').hide();
+    AudioManager.pauseAudio('fight-audio')
     AudioManager.startAudio('over-world-audio', true); 
   } else if (gameState === "battleState") {
-    $('.battle-action').show();
-    enterBattle();
+    AudioManager.pauseAudio('over-world-audio')
+    AudioManager.startAudio('fight-audio', true); 
+    $('.battle-action').show(); 
   } else if (gameState === "titleScreen") {
     $("#before-title").hide();
     $("#titleScreen").show();
-      
   }
 }
+//Set audio on player death
+AudioManager.setVolumeLevels();

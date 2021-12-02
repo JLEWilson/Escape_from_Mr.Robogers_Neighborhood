@@ -89,7 +89,7 @@ export class EnemyEntity extends Entity{
   constructor(name){
     switch (name){
     case "unknownError":
-      super("Unknown Error", 8, 0, 9, 2);
+      super("Unknown Error", 8, 0, 7, 2);
       this.skills = [
         {
           skillDamage: 10,
@@ -114,7 +114,16 @@ export class EnemyEntity extends Entity{
           skillText: "The typo moves too fast for you to see it"            
         }
       ];
-      break;        
+      break;
+      case "imposterSyndrome":
+        super("Imposter Syndrome", 15, 3, 10, 3);
+        this.skills = [
+          {
+            skillDamage: 12,
+            skillText: "You doubt yourself and begin to loose hope"            
+          }
+        ];
+        break;        
     default:
       super();
     }

@@ -9,7 +9,7 @@
 #### _**Matt Luker**_
 #### _**Skylar Brockbank**_
 #### _**Christina Welch**_
-#### Artwork By _****_
+#### Artwork By _**Cris Wilson**_
 #### Robot Art By _**Joezhuang at vecteezy.com**_
 #### Music By _**Matt Luker**_
 

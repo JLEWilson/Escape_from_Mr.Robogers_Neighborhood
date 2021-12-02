@@ -17,7 +17,6 @@ export function assignEnemy(name){
   playerEntity.setBattleText(enemy);
   enemy.setBattleText(playerEntity);
   $('.story-area').prepend("<p>You have encountered a " + enemy.name + "!!!</p>");
-  return enemy.name;
 }
 export function updatePlayerHealthUI(){
   $('#player-health').html(playerEntity.cpu);
@@ -25,27 +24,6 @@ export function updatePlayerHealthUI(){
 export function updatePlayerManaUI(){
   $('#player-mana').html(playerEntity.ram);
 }
-export function winGame(){
-  //show win game div
-}
-export function loseGame(){
-  //show lose game div
-}
-export function enterBattle(){
-  $('#attack').show();
-  $('#guard').show();
-  $('#debug-code').show();
-  $('#exit-battle').hide();
-}
-function exitBattle(){
-  $('#attack').hide();
-  $('#guard').hide();
-  $('#debug-code').hide();
-  $('#exit-battle').show();
-  changeGameState('overWorld');
-}
-
-//buttons
 
 export function attack() {
   const attack = playerEntity.attack(enemy);
@@ -73,7 +51,7 @@ export function attack() {
     } else {
       $('.story-area').prepend("<p>Your attack put " + enemy.name + " below 0 cpu!</p>");
       $('.story-area').prepend("<p>" + enemy.deathText[enemy.randomDeathIndex] + "</p>");
-      exitBattle();
+      changeGameState("overWorld");
     }
   } else {
     playerEntity.setBattleText(enemy);
@@ -131,7 +109,7 @@ export function magic(){
     } else {
       $('.story-area').prepend("<p>Your attack put " + enemy.name + " below 0 cpu!</p>");
       $('.story-area').prepend("<p>" + enemy.deathText[enemy.randomDeathIndex] + "</p>");
-      exitBattle();
+      changeGameState("overWorld")
     }
   } else {
     playerEntity.setBattleText(enemy);

@@ -1,5 +1,5 @@
 {
-  "name": "project_template",
+  "name": "Escape From Mr. Robogers Neighborhood",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,7 +11,7 @@
     "deploy": "gh-pages -d dist"
   },
   "keywords": [],
-  "author": "Jacob Wilson",
+  "author": "Skylar Brockbank, Matt Luker, Christy Welch Jacob Wilson, Zach Wilson",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.6.4",
