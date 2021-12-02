@@ -21,7 +21,7 @@ createRoom();
 
 var keysDown = {};
 
-document.addEventListener("keydown",(e)=>{keysDown[e.keyCode] = true; console.log('triggered');}, false);
+document.addEventListener("keydown",(e)=>{keysDown[e.keyCode] = true;}, false);
 document.addEventListener('keyup',(e)=>{delete keysDown[e.keyCode];}, false);
 
 export function takeInput(){

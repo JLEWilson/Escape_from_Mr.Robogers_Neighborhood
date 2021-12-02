@@ -16,7 +16,7 @@ export function assignEnemy(name){
   enemy = new EnemyEntity(name);
   playerEntity.setBattleText(enemy);
   enemy.setBattleText(playerEntity);
-  $('.story-area').prepend("<p>You have encountered a " + enemy.name + "!!!</p>");
+  $('.story-area').prepend("<p>You have encountered a wild" + enemy.name + "!!!</p>");
 }
 export function updatePlayerHealthUI(){
   $('#player-health').html(playerEntity.cpu);
@@ -43,15 +43,13 @@ export function attack() {
           $('.story-area').prepend("<p>" + enemy.attackText[enemy.randomAttackIndex] + "</p>");
         } else {
           $('.story-area').prepend("<p>" + playerEntity.deathText[playerEntity.randomDeathIndex] + "</p>");
-          $('#gameDiv').hide();
-          $('#death-screen').show();
+          changeGameState("gameOver");
         }
       } else {
         enemy.setBattleText(playerEntity);
         $('.story-area').prepend("<p>" + enemy.missText[enemy.randomMissIndex] + "</p>");
       }
     } else {
-      $('.story-area').prepend("<p>Your attack put " + enemy.name + " below 0 cpu!</p>");
       $('.story-area').prepend("<p>" + enemy.deathText[enemy.randomDeathIndex] + "</p>");
       changeGameState("overWorld");
     }
@@ -62,28 +60,28 @@ export function attack() {
 }
 
 export function guard(){
-  if(playerEntity.cpu < 5){
+  if(playerEntity.ram < 5){
     $('.story-area').prepend("<p>Not enough RAM, choose another skill!</p>");
   } else {
     playerEntity.guard();
-  $('.story-area').prepend("<p>" + playerEntity.guardText[playerEntity.randomGuardIndex] + "</p>");
-  const enemyAttack = enemy.attack(playerEntity);
-  if (enemyAttack > 0){
-    playerEntity.takeDamage(enemyAttack);
-    updatePlayerHealthUI();
-    enemy.setBattleText(playerEntity);
-    if(playerEntity.isAlive) {
-      $('.story-area').prepend("<p>" + enemy.attackText[enemy.randomAttackIndex] + "</p>");
+    updatePlayerManaUI();
+    $('.story-area').prepend("<p>" + playerEntity.guardText[playerEntity.randomGuardIndex] + "</p>");
+    const enemyAttack = enemy.attack(playerEntity);
+    if (enemyAttack > 0){
+      playerEntity.takeDamage(enemyAttack);
+      updatePlayerHealthUI();
+      enemy.setBattleText(playerEntity);
+      if(playerEntity.isAlive) {
+        $('.story-area').prepend("<p>" + enemy.attackText[enemy.randomAttackIndex] + "</p>");
+      } else {
+        $('.story-area').prepend("<p>" + playerEntity.deathText[playerEntity.randomDeathIndex] + "</p>");
+        changeGameState("gameOver");
+      }
     } else {
-      $('.story-area').prepend("<p>" + playerEntity.deathText[playerEntity.randomDeathIndex] + "</p>");
-      $('#gameDiv').hide();
-      $('#death-screen').show();
+      enemy.setBattleText(playerEntity);
+      $('.story-area').prepend("<p>" + enemy.blockedText[enemy.randomBlockedIndex] + "</p>");
     }
-  } else {
-    enemy.setBattleText(playerEntity);
-    $('.story-area').prepend("<p>" + enemy.blockedText[enemy.randomBlockedIndex] + "</p>");
-  }
-  playerEntity.resetGuard();
+    playerEntity.resetGuard();
   }
 }
 
@@ -108,17 +106,15 @@ export function magic(){
           $('.story-area').prepend("<p>" + enemy.attackText[enemy.randomAttackIndex] + "</p>");
         } else {
           $('.story-area').prepend("<p>" + playerEntity.deathText[playerEntity.randomDeathIndex] + "</p>");
-          $('#gameDiv').hide();
-          $('#death-screen').show();
+          changeGameState("gameOver");
         }
       } else {
         enemy.setBattleText(playerEntity);
         $('.story-area').prepend("<p>" + enemy.missText[enemy.randomMissIndex] + "</p>");
       }
     } else {
-      $('.story-area').prepend("<p>Your attack put " + enemy.name + " below 0 cpu!</p>");
       $('.story-area').prepend("<p>" + enemy.deathText[enemy.randomDeathIndex] + "</p>");
-      changeGameState("overWorld")
+      changeGameState("overWorld");
     }
   } else {
     playerEntity.setBattleText(enemy);

@@ -1,7 +1,7 @@
 import './css/styles.css';
 import $ from "jquery";
 import { takeInput, waltDisney, player1 } from "./js/overworldState.js";
-import {assignPlayer, enterBattle} from "./js/battleState.js";
+import {assignPlayer} from "./js/battleState.js";
 import { beepBoop } from "./js/intro";
 import AudioManager from "./js/AudioManager.js";
 import { BattleScreen } from './js/battleInterface.js';
@@ -25,14 +25,14 @@ $("#number-form").submit(function(event) {
     $("#response").text("You quickly learn this assignment is more difficult than you thought. Code begins to merge together in your head and errors begin to pile up. There's beeps where there should be 'would you be my neighbor' and the boops just wont show up at all!");
     break;
   case 4:
-    $("#response").text("As you stare at your code you begin to feel tired. You should have gotten to sleep earlier your not used to waking up this early. Your eyelids feel heavy and the screen full of code begins to fade.....");
+    $("#response").text("As you stare at your code you begin to feel tired. You should have gotten to sleep earlier. You're not used to waking up this early. Your eyelids feel heavy and the screen full of code begins to fade.....");
+    AudioManager.startAudio("creepy-rogers-audio", false);
     break;
   case 5:
     $("#response").text("...");
     break;
   case 6:
     $("#response").text("...well little programmer");
-    AudioManager.startAudio("creepy-rogers-audio", false);
     break;
   case 7:
     $("#intro-normal-img").hide();
@@ -55,7 +55,6 @@ let bs = new BattleScreen();
 
 //new code A
 document.addEventListener('click', function(){
-  console.log('this ran');
   bs.checkForSelect();});
 //end new code A
 
@@ -111,31 +110,36 @@ export function changeGameState(string){
     loopA();
     $('.character-create').hide();
     $('.battle-action').hide();
-    AudioManager.pauseAudio('fight-audio')
+    AudioManager.pauseAudio('fight-audio');
+    AudioManager.pauseAudio('boss-fight-audio');
     AudioManager.startAudio('over-world-audio', true); 
   } else if (gameState === "battleState") {
-    AudioManager.pauseAudio('over-world-audio')
+    AudioManager.pauseAudio('over-world-audio');
     AudioManager.startAudio('fight-audio', true); 
   } else if (gameState === "titleScreen") {
     $("#before-title").hide();
     $("#titleScreen").show();
+  } else if (gameState === "gameOver") {
+    AudioManager.pauseAudio('over-world-audio');
+    AudioManager.pauseAudio('fight-audio');
+    AudioManager.startAudio('death-audio', true);
+    $('#gameDiv').hide();
+    $('#death-screen').show();    
+  } else if (gameState === "charlieSheen") {
+    AudioManager.pauseAudio('fight-audio');
+    AudioManager.pauseAudio('over-world-audio');
+    AudioManager.startAudio('win-game-audio', true);
+    $("#gameDiv").hide();
+    $("#charlie-sheen").show();
+  } else if (gameState === "bossFight") {
+    AudioManager.pauseAudio('over-world-audio');
+    AudioManager.startAudio('boss-fight-audio', true);
   }
 }
 
 $('#death-btn').click(function() {
   window.location.reload();
-})
+});
 
-/* 
-Audio command for player death state
-AudioManager.pauseAudio('over-world-audio');
-AudioManager.pauseAudio('fight-audio');
-AudioManager.startAudio('death-audio');
 
-Audio command for victory
-AudioManager.pauseAudio('fight-audio');
-AudioManager.pauseAudio('over-world-audio');
-STILL NEED SOUND FOR VICTORY
-AudioManager.startAudio('win-audio');
-*/
 AudioManager.setVolumeLevels();

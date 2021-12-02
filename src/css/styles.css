@@ -44,6 +44,19 @@ body{
   border-radius: 1em;
 }
 
+#intro label {
+  font-size: 1.5rem;
+  padding-right: .5em;
+}
+
+#intro input {
+  font-size: 1.3rem;
+}
+
+#intro-btn {
+  font-size: 1.3rem;
+}
+
 /* ---before title--- */
 #before-title {
   display: none;
@@ -59,6 +72,8 @@ body{
 #before-title-btn {
   font-size: 2rem;
   border: none;
+  padding: .25em .5em;
+  border-radius: .5em;
 }
 
 #before-title-btn:hover {
@@ -113,10 +128,7 @@ body{
   padding: .5em;
   border-radius: .25em;
 }
-#hud {
-  background-color: rgba(0, 0, 0, 0.8);
-  padding: 1em;
-}
+
 #character-create-form {
   width: 40vw;
   margin-top: 1em;
@@ -134,14 +146,6 @@ body{
 #titleScreen input {
   font-size: 1.5rem;
   border-radius: .5em;
-}
-
-#cpu {
-  color: red;
-}
-
-#ram {
-  color: green;
 }
 /* ---overworld--- */
 
@@ -228,6 +232,13 @@ canvas {
   image-rendering: crisp-edges;
   image-rendering: pixelated;
 }
+.heal {
+  background-image: url('../assets/img/Healy_Boi.png');
+  background-size: cover;
+  image-rendering: auto;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
 .key {
   background-image: url('../assets/img/key.png');
   background-size: cover;
@@ -291,16 +302,43 @@ canvas {
   image-rendering: crisp-edges;
   image-rendering: pixelated;
 }
+.charlieSheen {
+  background-image: url('../assets/img/door-unlocked.png');
+  background-size: cover;
+  image-rendering: auto;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
 
-/* ---text-box--- */
+/* ---story-box & HUD--- */
+
+#hud {
+  background-color: rgba(31, 31, 31, .9);;
+  padding: 1em;
+  border-radius: .5em;
+}
+
+#cpu {
+  color: red;
+}
+
+#ram {
+  color: green;
+}
 
 #text-box {
-  background-color: rgba(31, 31, 31, .8);
+  background-color: rgba(31, 31, 31, .9);
   width: 40vw;
   height: 66.5vh;
   border-radius: .5em;
   padding: 1em;
-  overflow: auto;
+  overflow: hidden;
+  font-size: 1.5rem;
+}
+
+#text-box p {
+  border-bottom: .25em rgb(230, 227, 227) dashed;
+  padding-bottom: .5em;
 }
 
 /* ---Death screen--- */
@@ -333,7 +371,7 @@ canvas {
 
 /* ---win screen--- */
 
-#win-screen {
+#charlie-sheen {
   display: none;
 }
 

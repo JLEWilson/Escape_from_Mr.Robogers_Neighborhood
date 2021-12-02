@@ -27,10 +27,10 @@ export default class Entity{
   guard(){
     this.fanUsage *= 3;
     this.ram -= 5;
-    if(this.cpu > this.maxCpu -5){
-      this.cpu = this.maxCpu
+    if(this.cpu >= this.maxCpu -5){
+      this.cpu = this.maxCpu;
     } else {
-      this.cpu += 5
+      this.cpu += 5;
     }
   }
   resetGuard(){
@@ -96,41 +96,17 @@ export class EnemyEntity extends Entity{
   constructor(name){
     switch (name){
     case "unknownError":
-      super("Unknown Error", 8, 0, 7, 2);
-      // this.skills = [
-      //   {
-      //     skillDamage: 10,
-      //     skillText: "You bang your head on the closest hard object in frustration",
-      //   }
-      // ];
+      super("Unknown Error", 10, 0, 8, 2);
       break;
     case "bug":
-      super("Bug", 5, 0, 3, 1);
-      // this.skills = [
-      //   {
-      //     skillDamage: 5,
-      //     skillText: "Stops you from running correctly"
-      //   }
-      // ];
+      super("Bug", 5, 0, 5, 1);
       break;
     case "typo":
-      super("Typo", 7, 3, 5, 2);
-      // this.skills = [
-      //   {
-      //     skillDamage: 8,
-      //     skillText: "The typo moves too fast for you to see it"            
-      //   }
-      // ];
+      super("Typo", 7, 3, 7, 2);
       break;
-      case "imposterSyndrome":
-        super("Imposter Syndrome", 15, 3, 10, 3);
-        // this.skills = [
-        //   {
-        //     skillDamage: 12,
-        //     skillText: "You doubt yourself and begin to loose hope"            
-        //   }
-        // ];
-        break;        
+    case "imposterSyndrome":
+      super("Imposter Syndrome", 15, 3, 10, 3);
+      break;        
     default:
       super();
     }
@@ -138,14 +114,20 @@ export class EnemyEntity extends Entity{
   setBattleText(player){
     this.missText = [
       "The " + this.name + "'s aim is bad",
-      "The " + this.name + " thought you could use a break!"
+      "The " + this.name + " thought you could use a break!",
+      "The " + this.name + " must have been looking somewhere else and missed you!",
+      "The " + this.name + " didn't break your project! You take no damage"
     ];
     this.attackText = [
-      "The " + this.name + " annoyed " + player.name +". " + player.name + " health reduced to " + player.cpu,
+      "The " + this.name + " annoyed " + player.name +". " + player.name + "'s health reduced to " + player.cpu,
+      "The " + this.name + " is draining your will to live. " + player.name + "'s health reduced to " + player.cpu,
+      "The " + this.name + " makes you think you won't be able to complete coding bootcamp. " + player.name + "'s health reduced to " + player.cpu,
     ];
     this.deathText = [
       "You fixed the bug!",
       "This bug was an easy fix",
+      "Problem solved!",
+      "You got this.  No issue will stop you!"
     ];
     this.blockedText = [
       "100% of damage blocked!",

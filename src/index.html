@@ -10,7 +10,7 @@
     <form id="number-form">
       <label>please type a number to talk to Mr.Roboger</label>
       <input id="number-input" type="number" value="143" max="500">
-      <button type="submit">submit</button>
+      <button id="intro-btn" type="submit">submit</button>
     </form>
     <div id="intro-response-div">
       <h2 id="response"></h2>
@@ -20,23 +20,29 @@
   </div>
   <div id="before-title">
     <h1>Your in my neighborhood now...</h1>
-    <button id="before-title-btn">></button>
+    <button id="before-title-btn">next</button>
   </div>
   <div id="musicDiv">
-    <audio id='over-world-audio' controls="controls">
+    <audio id='over-world-audio'>
       <source src="https://docs.google.com/uc?export=download&id=1J5jW7DEtMi6149ZagymZbjpz2RDfMELR">
     </audio>
-    <audio id='item-audio' controls="controls">
+    <audio id='item-audio'>
       <source src="https://docs.google.com/uc?export=download&id=1C-ZU8p8HMuf9ytCeo4GCKO18e1DuQ5Ws">
     </audio>
-    <audio id='fight-audio' controls="controls">
+    <audio id='fight-audio'>
       <source src="https://docs.google.com/uc?export=download&id=16pRRHjYZEI378rThoDNv8_g2JKmkDIhX">
     </audio>
-    <audio id='death-audio' controls="controls">
+    <audio id='death-audio'>
       <source src="https://docs.google.com/uc?export=download&id=1PHdzsGqwzxu8crMiWSozpmbctOFBaugU">
     </audio>
-    <audio id='creepy-rogers-audio' controls="controls">
+    <audio id='creepy-rogers-audio'>
       <source src="https://docs.google.com/uc?export=download&id=1HDICfIcu_lmmp1yvPFHoYPap2gQVpPi9">
+    </audio>
+    <audio id='boss-fight-audio'>
+      <source src="https://docs.google.com/uc?export=download&id=14QhYYk8NJ1Kstzsjf9cb7x45iyFRl6zk">
+    </audio>
+    <audio id='win-game-audio'>
+      <source src="https://www.marineband.marines.mil/Portals/175/Docs/Audio/Taps/Taps_Matt_Harding.mp3?ver=CyGZil5rryuwAZkBle2ULg%3d%3d">
     </audio>
   </div>
   <div class="character-create" id="titleScreen">
@@ -75,7 +81,7 @@
     <p>RIP</p>
     <button id="death-btn">Re-start your project</button>
   </div>
-  <div id="win-screen">
+  <div id="charlie-sheen">
     <img id="win-screen-img" src="./assets/img/Finish_screen.png">
     <div id="win-screen-text">
       <h1>Congrats!</h1>
